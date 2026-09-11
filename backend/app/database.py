@@ -4,7 +4,10 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://astrowake_user:astrowake_pass@postgres:5432/astrowake_db")
 
-# Ajuste se usar SQLite para testes em memória
+# SQLAlchemy 2.0 requer o dialect "postgresql://" ou "postgresql+psycopg2://", nao aceita o legado "postgres://"
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
 connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
 
 engine = create_engine(DATABASE_URL, connect_args=connect_args)
