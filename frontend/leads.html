@@ -367,6 +367,98 @@
       border-color: #f87171;
     }
 
+    /* Modal Bonito de Confirmação */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 7, 14, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-box {
+      background: var(--superficie);
+      border: 1px solid var(--linha-forte);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 420px;
+      padding: 2rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 40px rgba(204,167,125,0.1);
+      text-align: center;
+      animation: modalZoom 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalZoom {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-icone {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .modal-box h3 {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      color: var(--ouro-claro);
+      margin-bottom: 0.6rem;
+    }
+
+    .modal-box p {
+      font-size: 0.9rem;
+      color: var(--texto-2);
+      line-height: 1.5;
+      margin-bottom: 1.8rem;
+    }
+
+    .modal-acoes {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .btn-cancelar {
+      padding: 0.65rem 1.4rem;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      background: transparent;
+      border: 1px solid var(--linha-forte);
+      color: var(--texto-2);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-cancelar:hover {
+      background: rgba(255,255,255,0.06);
+      color: var(--texto);
+    }
+
+    .btn-confirmar-del {
+      padding: 0.65rem 1.4rem;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 500;
+      background: #f87171;
+      border: 1px solid #f87171;
+      color: #180303;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-confirmar-del:hover {
+      filter: brightness(1.15);
+      box-shadow: 0 4px 15px rgba(248, 113, 113, 0.4);
+    }
+
     .vazio {
       text-align: center;
       padding: 4rem 2rem;
@@ -504,6 +596,19 @@
   </div>
 </div>
 
+<!-- Modal Bonito de Confirmação de Exclusão -->
+<div id="modal-del" class="modal-overlay">
+  <div class="modal-box">
+    <div class="modal-icone">🗑️</div>
+    <h3>Excluir Contato</h3>
+    <p id="modal-del-texto">Tem certeza que deseja excluir permanentemente este contato?</p>
+    <div class="modal-acoes">
+      <button type="button" class="btn-cancelar" onclick="fecharModalDelecao()">Cancelar</button>
+      <button type="button" id="btn-confirmar-exclusao" class="btn-confirmar-del">Confirmar Exclusão</button>
+    </div>
+  </div>
+</div>
+
 <div id="toast" class="toast">Lista de contatos atualizada!</div>
 
 <script>
@@ -511,6 +616,7 @@
   var leadsFiltrados = [];
   var paginaAtual = 1;
   var ITENS_POR_PAGINA = 20;
+  var idLeadParaExcluir = null;
 
   function exibirToast(msg) {
     var t = document.getElementById('toast');
@@ -635,24 +741,47 @@
     }
   }
 
-  async function deletarLead(id, nome) {
-    if (!confirm('Tem certeza que deseja excluir o contato de "' + nome + '"?')) {
-      return;
-    }
+  function abrirModalDelecao(id, nome) {
+    idLeadParaExcluir = id;
+    document.getElementById('modal-del-texto').innerHTML = 'Tem certeza que deseja excluir permanentemente o contato de <strong>' + escapeHtml(nome) + '</strong>? Esta ação não pode ser desfeita.';
+    var modal = document.getElementById('modal-del');
+    modal.style.display = 'flex';
+  }
+
+  function fecharModalDelecao() {
+    idLeadParaExcluir = null;
+    var modal = document.getElementById('modal-del');
+    modal.style.display = 'none';
+  }
+
+  async function executarDelecao() {
+    if (!idLeadParaExcluir) return;
+    var btn = document.getElementById('btn-confirmar-exclusao');
     try {
-      var res = await fetch('/api/leads/' + id, {
+      btn.innerText = 'Excluindo...';
+      btn.disabled = true;
+
+      var res = await fetch('/api/leads/' + idLeadParaExcluir, {
         method: 'DELETE'
       });
-      if (!res.ok) throw new Error('Erro ao excluir contato');
+      if (!res.ok && res.status !== 204 && res.status !== 200) {
+        throw new Error('Código de erro: ' + res.status);
+      }
       
-      todosLeads = todosLeads.filter(function(l) { return l.id !== id; });
+      todosLeads = todosLeads.filter(function(l) { return l.id !== idLeadParaExcluir; });
+      fecharModalDelecao();
       atualizarKPIs();
       aplicarFiltro();
       exibirToast('Contato excluído com sucesso!');
     } catch (err) {
       alert('Erro ao excluir contato: ' + err.message);
+    } finally {
+      btn.innerText = 'Confirmar Exclusão';
+      btn.disabled = false;
     }
   }
+
+  document.getElementById('btn-confirmar-exclusao').addEventListener('click', executarDelecao);
 
   function aoChamarLead(id, nome, telefone) {
     var lead = todosLeads.find(function(l) { return l.id === id; });
@@ -708,7 +837,7 @@
             '<a href="' + linkZap + '" target="_blank" rel="noopener" class="btn-zap" onclick="aoChamarLead(' + l.id + ')" title="Abrir conversa no WhatsApp">' +
               '<span>Chamar</span>' +
             '</a>' +
-            '<button type="button" class="btn-deletar" onclick="deletarLead(' + l.id + ', \'' + escapeHtml(l.nome).replace(/'/g, "\\'") + '\')" title="Excluir contato">' +
+            '<button type="button" class="btn-deletar" onclick="abrirModalDelecao(' + l.id + ', \'' + escapeHtml(l.nome).replace(/'/g, "\\'") + '\')" title="Excluir contato">' +
               '🗑️' +
             '</button>' +
           '</div>' +
