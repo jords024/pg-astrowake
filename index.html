@@ -470,6 +470,91 @@ footer .marca{font-size:.85rem}
 .barra .cta{width:100%;--altura:54px}
 @media(min-width:760px){.barra{display:none}}
 
+/* ---------- captura antes do checkout ---------- */
+/* o topo fixo comeria a primeira linha da oferta ao ancorar */
+#oferta{scroll-margin-top:70px}
+
+.fundo-modal{
+  position:fixed;inset:0;z-index:100;display:none;
+  align-items:center;justify-content:center;padding:1.25rem;
+  background:rgba(2,4,9,.82);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+.fundo-modal.aberto{display:flex}
+
+.modal{
+  width:100%;max-width:420px;position:relative;
+  padding:2.1rem 1.7rem 1.7rem;border-radius:18px;
+  border:1px solid var(--linha-forte);
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(204,167,125,.13), transparent 62%),
+    linear-gradient(180deg,#0d1626,#060a12);
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.9),
+             0 0 120px -40px rgba(204,167,125,.35);
+  text-align:center;
+  animation:sobe .32s cubic-bezier(.2,.8,.3,1) both;
+}
+@keyframes sobe{from{opacity:0;transform:translateY(16px) scale(.98)}}
+@media(prefers-reduced-motion:reduce){.modal{animation:none}}
+
+.modal .fechar{
+  position:absolute;top:.7rem;right:.7rem;
+  width:34px;height:34px;display:grid;place-items:center;
+  border:0;border-radius:50%;background:transparent;cursor:pointer;
+  color:var(--texto-3);font-size:1.25rem;line-height:1;
+}
+.modal .fechar:hover{color:var(--ouro-claro)}
+.modal .fechar:focus-visible{outline:2px solid var(--ouro-claro);outline-offset:2px}
+
+.modal .estrela{font-size:.85rem;color:var(--ouro);margin:0 0 .9rem;line-height:1}
+.modal h2{font-size:1.55rem;margin:0 0 .5rem;line-height:1.22}
+.modal .apoio{
+  font-family:var(--sans);font-size:.86rem;line-height:1.5;
+  color:var(--texto-3);margin:0 0 1.5rem;
+}
+
+.campo{text-align:left;margin-bottom:1rem}
+.campo label{
+  display:block;font-family:var(--sans);font-size:.68rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ouro);margin-bottom:.45rem;
+}
+.entrada{display:flex;align-items:stretch;gap:.5rem}
+.ddi{
+  display:grid;place-items:center;padding:0 .8rem;flex:none;
+  font-family:var(--sans);font-size:.9rem;color:var(--texto-2);
+  border:1px solid var(--linha);border-radius:10px;
+  background:rgba(4,7,14,.6);
+}
+.campo input{
+  width:100%;min-height:52px;padding:0 1rem;
+  font-family:var(--sans);font-size:1rem;color:var(--texto);
+  background:rgba(4,7,14,.6);
+  border:1px solid var(--linha);border-radius:10px;
+  transition:border-color .18s ease, box-shadow .18s ease;
+}
+.campo input::placeholder{color:#5d6878}
+.campo input:focus{
+  outline:0;border-color:var(--ouro);
+  box-shadow:0 0 0 3px rgba(204,167,125,.16);
+}
+.campo input[aria-invalid="true"]{border-color:#d4766a}
+.erro{
+  display:none;font-family:var(--sans);font-size:.76rem;
+  color:#e2958a;margin:.4rem 0 0;
+}
+.campo.ruim .erro{display:block}
+
+.modal .cta{width:100%;margin-top:.4rem}
+.consentimento{
+  font-family:var(--sans);font-size:.7rem;line-height:1.6;
+  color:var(--texto-3);margin:1.1rem 0 0;
+}
+.consentimento a{color:var(--texto-2)}
+.selo-seguro{
+  font-family:var(--sans);font-size:.66rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--texto-3);margin:.9rem 0 0;
+}
+
 /* ---------- entrada suave ---------- */
 .revela{opacity:1;transform:none}
 @media(prefers-reduced-motion:no-preference){
@@ -819,6 +904,47 @@ footer .marca{font-size:.85rem}
   <p class="copyright">Astrologia aplicada à vida real<br>© 2026 Astrowake · Todos os direitos reservados</p>
 </footer>
 
+<!-- ============ CAPTURA ANTES DO CHECKOUT ============ -->
+<div class="fundo-modal" id="modal" role="dialog" aria-modal="true"
+     aria-labelledby="modal-titulo" hidden>
+  <div class="modal">
+    <button class="fechar" type="button" data-fechar aria-label="Fechar">✕</button>
+    <p class="estrela" aria-hidden="true">✦</p>
+    <h2 id="modal-titulo">Falta um passo</h2>
+    <p class="apoio">Deixe seu nome e WhatsApp para levarmos você ao pagamento já
+      com os dados preenchidos — e para conseguirmos te ajudar se algo travar.</p>
+
+    <form id="form-lead" novalidate>
+      <div class="campo" id="c-nome">
+        <label for="lead-nome">Seu nome</label>
+        <input id="lead-nome" name="nome" type="text" autocomplete="name"
+               placeholder="Como podemos te chamar" required>
+        <p class="erro">Escreva seu nome para continuarmos.</p>
+      </div>
+
+      <div class="campo" id="c-tel">
+        <label for="lead-tel">WhatsApp</label>
+        <div class="entrada">
+          <span class="ddi">🇧🇷 +55</span>
+          <input id="lead-tel" name="telefone" type="tel" inputmode="numeric"
+                 autocomplete="tel-national" placeholder="(00) 00000-0000"
+                 maxlength="15" required>
+        </div>
+        <p class="erro">Confira o número: precisa ter DDD e 9 dígitos.</p>
+      </div>
+
+      <button class="cta" type="submit">Ir para o pagamento</button>
+    </form>
+
+    <p class="consentimento">
+      Ao continuar você concorda com a
+      <a href="politica-de-privacidade.html" target="_blank" rel="noopener">Política de
+      Privacidade</a> e autoriza o contato por WhatsApp sobre o Astrowake.
+    </p>
+    <p class="selo-seguro">Pagamento processado pela Hotmart</p>
+  </div>
+</div>
+
 <!-- CTA sempre ao alcance no celular: aparece assim que o hero sai da tela -->
 <div class="barra" id="barra">
   <a class="cta" href="#oferta">Quero entrar no Astrowake</a>
@@ -850,5 +976,120 @@ new IntersectionObserver(([e]) => { passouHero = !e.isIntersecting; pinta(); },
   { threshold: 0 }).observe(hero);
 new IntersectionObserver(([e]) => { naOferta = e.isIntersecting; pinta(); },
   { threshold: 0.25 }).observe(oferta);
+
+
+/* ===================================================================
+   CAPTURA DO LEAD → CHECKOUT
+
+   Os botões ANTES do preço são âncora para #oferta: ninguém decide
+   pagar sem ter visto quanto custa, e mandar direto para o checkout
+   nesse ponto só queima o clique.
+   Os botões A PARTIR do preço ([data-checkout]) abrem este modal.
+
+   Uma ressalva importante e que precisa ficar escrita: esta página é
+   estática, hospedada no GitHub Pages. NÃO existe servidor aqui. O
+   nome e o telefone viajam para a Hotmart pela URL, e é só. Para o
+   lead chegar até vocês mesmo quando a pessoa desiste no pagamento,
+   preencha WEBHOOK abaixo com um endpoint que aceite POST — o mesmo
+   da ZapVoice já usado na Bússola serve.
+   =================================================================== */
+const CHECKOUT = 'https://pay.hotmart.com/S58109644P?checkoutMode=10';
+const WEBHOOK  = '';   // ex.: 'https://seu-endpoint/lead'
+
+const modal  = document.getElementById('modal');
+const form   = document.getElementById('form-lead');
+const iNome  = document.getElementById('lead-nome');
+const iTel   = document.getElementById('lead-tel');
+const CHAVE  = 'astrowake_lead';
+let  origem  = null;   // quem abriu, para devolver o foco ao fechar
+
+/* máscara: formata o que a pessoa digita, sem nunca reordenar dígito */
+const mascara = (v) => {
+  const d = v.replace(/\D/g, '').slice(0, 11);
+  if (d.length <= 2)  return d.replace(/(\d{0,2})/, '($1');
+  if (d.length <= 6)  return d.replace(/(\d{2})(\d+)/, '($1) $2');
+  if (d.length <= 10) return d.replace(/(\d{2})(\d{4})(\d+)/, '($1) $2-$3');
+  return d.replace(/(\d{2})(\d{5})(\d+)/, '($1) $2-$3');
+};
+iTel.addEventListener('input', (e) => { e.target.value = mascara(e.target.value); });
+
+function abrir(botao) {
+  origem = botao || null;
+  modal.hidden = false;
+  modal.classList.add('aberto');
+  document.body.style.overflow = 'hidden';
+  // devolve o que a pessoa já digitou numa visita anterior
+  try {
+    const s = JSON.parse(localStorage.getItem(CHAVE) || '{}');
+    if (s.nome && !iNome.value) iNome.value = s.nome;
+    if (s.tel  && !iTel.value)  iTel.value  = mascara(s.tel);
+  } catch {}
+  setTimeout(() => (iNome.value ? iTel : iNome).focus(), 60);
+}
+
+function fechar() {
+  modal.classList.remove('aberto');
+  modal.hidden = true;
+  document.body.style.overflow = '';
+  if (origem) origem.focus();
+}
+
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-checkout]');
+  if (btn) { e.preventDefault(); abrir(btn); return; }
+  if (e.target.closest('[data-fechar]')) { fechar(); return; }
+  if (e.target === modal) fechar();          // clique no fundo
+});
+document.addEventListener('keydown', (e) => {
+  if (modal.hidden) return;
+  if (e.key === 'Escape') { fechar(); return; }
+  if (e.key !== 'Tab') return;
+  // prende o Tab dentro do modal enquanto ele estiver aberto
+  const foco = modal.querySelectorAll('button, input, a[href]');
+  const pri = foco[0], ult = foco[foco.length - 1];
+  if (e.shiftKey && document.activeElement === pri) { e.preventDefault(); ult.focus(); }
+  else if (!e.shiftKey && document.activeElement === ult) { e.preventDefault(); pri.focus(); }
+});
+
+const marcar = (id, ruim) => {
+  const c = document.getElementById(id);
+  c.classList.toggle('ruim', ruim);
+  c.querySelector('input').setAttribute('aria-invalid', ruim ? 'true' : 'false');
+  return !ruim;
+};
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const nome = iNome.value.trim().replace(/\s+/g, ' ');
+  const dig  = iTel.value.replace(/\D/g, '');
+
+  // 10 dígitos ainda existe em fixo; 11 é o celular com o 9. Menos que
+  // isso é digitação incompleta, não número curto.
+  const okNome = marcar('c-nome', nome.length < 2);
+  const okTel  = marcar('c-tel', !(dig.length === 10 || dig.length === 11));
+  if (!okNome) { iNome.focus(); return; }
+  if (!okTel)  { iTel.focus();  return; }
+
+  try { localStorage.setItem(CHAVE, JSON.stringify({ nome, tel: dig })); } catch {}
+
+  // Hotmart preenche o checkout por estes parâmetros
+  const u = new URL(CHECKOUT);
+  u.searchParams.set('name', nome);
+  u.searchParams.set('phoneac', dig.slice(0, 2));
+  u.searchParams.set('phonenumber', dig.slice(2));
+
+  if (typeof fbq === 'function') fbq('track', 'InitiateCheckout');
+  if (WEBHOOK) {
+    // keepalive: a requisição sobrevive à navegação que vem logo abaixo
+    fetch(WEBHOOK, {
+      method: 'POST', keepalive: true,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome, telefone: '55' + dig, origem: 'pg-astrowake',
+                             url: location.href, ts: new Date().toISOString() })
+    }).catch(() => {});
+  }
+
+  window.location.href = u.toString();
+});
 </script>
 </html>
