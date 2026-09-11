@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
@@ -38,7 +38,7 @@
     }
 
     .container {
-      max-width: 1140px;
+      max-width: 1180px;
       margin: 0 auto;
     }
 
@@ -251,7 +251,6 @@
       flex-wrap: wrap;
     }
 
-    /* Badges de Status sincronizados */
     .badge-status {
       display: inline-flex;
       align-items: center;
@@ -321,6 +320,12 @@
       color: var(--perigo);
     }
 
+    .acoes-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
     .btn-zap {
       display: inline-flex;
       align-items: center;
@@ -339,6 +344,27 @@
     .btn-zap:hover {
       background: #25d366;
       color: #032b10;
+    }
+
+    .btn-deletar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(248, 113, 113, 0.1);
+      color: var(--perigo);
+      border: 1px solid rgba(248, 113, 113, 0.25);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .btn-deletar:hover {
+      background: #f87171;
+      color: #1e0505;
+      border-color: #f87171;
     }
 
     .vazio {
@@ -458,7 +484,7 @@
             <th>WhatsApp</th>
             <th>Data e Hora (Brasília)</th>
             <th>Fase do CRM</th>
-            <th>Ação</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody id="tabela-corpo">
@@ -609,6 +635,25 @@
     }
   }
 
+  async function deletarLead(id, nome) {
+    if (!confirm('Tem certeza que deseja excluir o contato de "' + nome + '"?')) {
+      return;
+    }
+    try {
+      var res = await fetch('/api/leads/' + id, {
+        method: 'DELETE'
+      });
+      if (!res.ok) throw new Error('Erro ao excluir contato');
+      
+      todosLeads = todosLeads.filter(function(l) { return l.id !== id; });
+      atualizarKPIs();
+      aplicarFiltro();
+      exibirToast('Contato excluído com sucesso!');
+    } catch (err) {
+      alert('Erro ao excluir contato: ' + err.message);
+    }
+  }
+
   function aoChamarLead(id, nome, telefone) {
     var lead = todosLeads.find(function(l) { return l.id === id; });
     if (lead && lead.status === 'novo') {
@@ -659,9 +704,14 @@
           '</select>' +
         '</td>' +
         '<td>' +
-          '<a href="' + linkZap + '" target="_blank" rel="noopener" class="btn-zap" onclick="aoChamarLead(' + l.id + ')" title="Abrir conversa no WhatsApp">' +
-            '<span>Chamar</span>' +
-          '</a>' +
+          '<div class="acoes-wrap">' +
+            '<a href="' + linkZap + '" target="_blank" rel="noopener" class="btn-zap" onclick="aoChamarLead(' + l.id + ')" title="Abrir conversa no WhatsApp">' +
+              '<span>Chamar</span>' +
+            '</a>' +
+            '<button type="button" class="btn-deletar" onclick="deletarLead(' + l.id + ', \'' + escapeHtml(l.nome).replace(/'/g, "\\'") + '\')" title="Excluir contato">' +
+              '🗑️' +
+            '</button>' +
+          '</div>' +
         '</td>' +
         '</tr>';
     }

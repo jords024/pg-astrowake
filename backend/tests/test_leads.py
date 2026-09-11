@@ -1,4 +1,4 @@
-﻿from datetime import datetime, timezone
+from datetime import datetime, timezone
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
@@ -87,19 +87,16 @@ def test_atualizar_status_lead_crm():
     res_create = client.post("/api/leads", json={"nome": "Lead CRM", "telefone": "5585999990003"})
     lead_id = res_create.json()["id"]
 
-    # Atualizar para chamado
     res_patch = client.patch(f"/api/leads/{lead_id}", json={"status": "chamado"})
     assert res_patch.status_code == 200
     data = res_patch.json()
     assert data["status"] == "chamado"
     assert data["chamado"] is True
 
-    # Atualizar para comprou
     res_comprou = client.patch(f"/api/leads/{lead_id}", json={"status": "comprou"})
     assert res_comprou.status_code == 200
     assert res_comprou.json()["status"] == "comprou"
 
-    # Atualizar para desistiu
     res_desistiu = client.patch(f"/api/leads/{lead_id}", json={"status": "desistiu"})
     assert res_desistiu.status_code == 200
     assert res_desistiu.json()["status"] == "desistiu"
@@ -110,3 +107,14 @@ def test_rejeitar_status_invalido():
 
     res_invalido = client.patch(f"/api/leads/{lead_id}", json={"status": "status_que_nao_existe"})
     assert res_invalido.status_code == 422
+
+def test_deletar_lead():
+    res_create = client.post("/api/leads", json={"nome": "Lead Deletar", "telefone": "5585999990005"})
+    lead_id = res_create.json()["id"]
+
+    res_delete = client.delete(f"/api/leads/{lead_id}")
+    assert res_delete.status_code == 204
+
+    # Verificar que nao existe mais
+    res_get = client.get("/api/leads")
+    assert len(res_get.json()) == 0

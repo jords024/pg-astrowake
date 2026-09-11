@@ -5,7 +5,7 @@ services:
   # BACKEND API (FastAPI)
   # ==========================================
   astrowake_backend:
-    image: aryalvesfernandes/landingpage-astrowake:backend-1.0.3
+    image: aryalvesfernandes/landingpage-astrowake:backend-1.0.4
     hostname: "{{.Service.Name}}.{{.Task.Slot}}"
     networks:
       - network_swarm_public
@@ -31,7 +31,7 @@ services:
   # FRONTEND (Nginx - Landing Page & Leads)
   # ==========================================
   astrowake_frontend:
-    image: aryalvesfernandes/landingpage-astrowake:frontend-1.0.3
+    image: aryalvesfernandes/landingpage-astrowake:frontend-1.0.4
     hostname: "{{.Service.Name}}.{{.Task.Slot}}"
     networks:
       - network_swarm_public

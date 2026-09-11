@@ -1,4 +1,4 @@
-﻿from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from sqlalchemy import text
@@ -7,10 +7,8 @@ from .database import engine, Base, get_db
 from .models import Lead
 from .schemas import LeadCreate, LeadUpdate, LeadResponse
 
-# Criação das tabelas
 Base.metadata.create_all(bind=engine)
 
-# Garantir migração de colunas caso a tabela já existisse
 with engine.connect() as conn:
     try:
         conn.execute(text("ALTER TABLE leads ADD COLUMN IF NOT EXISTS status VARCHAR(50) DEFAULT 'novo';"))
@@ -75,3 +73,12 @@ def atualizar_lead(lead_id: int, lead_in: LeadUpdate, db: Session = Depends(get_
     db.commit()
     db.refresh(db_lead)
     return db_lead
+
+@app.delete("/api/leads/{lead_id}", status_code=status.HTTP_204_NO_CONTENT)
+def deletar_lead(lead_id: int, db: Session = Depends(get_db)):
+    db_lead = db.query(Lead).filter(Lead.id == lead_id).first()
+    if not db_lead:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Lead nao encontrado.")
+    db.delete(db_lead)
+    db.commit()
+    return None
