@@ -1,0 +1,747 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Astrowake — Gestão de Leads & CRM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap">
+  <style>
+    :root {
+      --ceu: #04070e;
+      --superficie: #0a1220;
+      --elevado: #101a2b;
+      --linha: rgba(204,167,125,.16);
+      --linha-forte: rgba(204,167,125,.35);
+      --ouro: #cca77d;
+      --ouro-claro: #e8d0ac;
+      --texto: #ecefea;
+      --texto-2: #b9c2ce;
+      --texto-3: #8c97a8;
+      --sucesso: #4ade80;
+      --info: #60a5fa;
+      --alerta: #fbbf24;
+      --perigo: #f87171;
+      --sans: "Jost", system-ui, sans-serif;
+      --serif: "Playfair Display", Georgia, serif;
+      --logo: "Cinzel", Georgia, serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--ceu);
+      color: var(--texto);
+      font-family: var(--sans);
+      min-height: 100vh;
+      padding: 2rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--linha);
+      margin-bottom: 2rem;
+    }
+
+    .logo-area h1 {
+      font-family: var(--logo);
+      font-size: 1.4rem;
+      letter-spacing: 0.2em;
+      color: var(--ouro-claro);
+    }
+
+    .logo-area p {
+      font-size: 0.85rem;
+      color: var(--texto-3);
+      margin-top: 0.3rem;
+      letter-spacing: 0.05em;
+    }
+
+    .topo-acoes {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.2rem;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid var(--linha-forte);
+      background: transparent;
+      color: var(--ouro-claro);
+    }
+
+    .btn:hover {
+      background: rgba(204,167,125,0.1);
+      border-color: var(--ouro);
+    }
+
+    .btn-ouro {
+      background: linear-gradient(135deg, #e8d0ac, #cca77d);
+      color: #120d06;
+      border: none;
+    }
+
+    .btn-ouro:hover {
+      filter: brightness(1.1);
+    }
+
+    .btn-ouro.carregando {
+      opacity: 0.7;
+      cursor: wait;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--elevado);
+      border: 1px solid var(--ouro);
+      color: var(--ouro-claro);
+      padding: 0.8rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      z-index: 1000;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .card-kpi {
+      background: var(--superficie);
+      border: 1px solid var(--linha);
+      border-radius: 12px;
+      padding: 1.3rem;
+    }
+
+    .card-kpi span {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--texto-3);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-kpi strong {
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: var(--ouro-claro);
+    }
+
+    .tabela-card {
+      background: var(--superficie);
+      border: 1px solid var(--linha);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .tabela-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 1.5rem;
+      border-bottom: 1px solid var(--linha);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .tabela-header h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--texto);
+    }
+
+    .filtros-area {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .filtro-select, .filtro-busca {
+      background: var(--elevado);
+      border: 1px solid var(--linha);
+      color: var(--texto);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .filtro-busca {
+      width: 220px;
+    }
+
+    .filtro-select:focus, .filtro-busca:focus {
+      border-color: var(--ouro);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background: rgba(16, 26, 43, 0.6);
+      padding: 1rem 1.2rem;
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--texto-3);
+      border-bottom: 1px solid var(--linha);
+    }
+
+    td {
+      padding: 1rem 1.2rem;
+      border-bottom: 1px solid rgba(204,167,125,0.08);
+      color: var(--texto-2);
+      vertical-align: middle;
+    }
+
+    tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .nome-lead {
+      color: var(--texto);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Badges de Status sincronizados */
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .badge-status.novo {
+      background: rgba(251, 191, 36, 0.12);
+      color: var(--alerta);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+    }
+
+    .badge-status.chamado {
+      background: rgba(96, 165, 250, 0.12);
+      color: var(--info);
+      border: 1px solid rgba(96, 165, 250, 0.3);
+    }
+
+    .badge-status.comprou {
+      background: rgba(74, 222, 128, 0.12);
+      color: var(--sucesso);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+    }
+
+    .badge-status.desistiu {
+      background: rgba(248, 113, 113, 0.12);
+      color: var(--perigo);
+      border: 1px solid rgba(248, 113, 113, 0.3);
+    }
+
+    .status-select {
+      background: var(--elevado);
+      border: 1px solid var(--linha);
+      color: var(--texto);
+      padding: 0.45rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-family: var(--sans);
+      cursor: pointer;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    .status-select.status-novo {
+      border-color: rgba(251, 191, 36, 0.5);
+      color: var(--alerta);
+    }
+
+    .status-select.status-chamado {
+      border-color: rgba(96, 165, 250, 0.5);
+      color: var(--info);
+    }
+
+    .status-select.status-comprou {
+      border-color: rgba(74, 222, 128, 0.5);
+      color: var(--sucesso);
+      font-weight: 600;
+    }
+
+    .status-select.status-desistiu {
+      border-color: rgba(248, 113, 113, 0.5);
+      color: var(--perigo);
+    }
+
+    .btn-zap {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(37, 211, 102, 0.15);
+      color: #25d366;
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-zap:hover {
+      background: #25d366;
+      color: #032b10;
+    }
+
+    .vazio {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--texto-3);
+    }
+
+    .vazio p {
+      margin-top: 0.5rem;
+    }
+
+    .paginacao-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background: var(--elevado);
+      border-top: 1px solid var(--linha);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .paginacao-info {
+      font-size: 0.85rem;
+      color: var(--texto-3);
+    }
+
+    .paginacao-botoes {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-pag {
+      background: var(--superficie);
+      border: 1px solid var(--linha);
+      color: var(--texto);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-pag:hover:not(:disabled) {
+      border-color: var(--ouro);
+      color: var(--ouro-claro);
+    }
+
+    .btn-pag:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .btn-pag.ativo {
+      background: rgba(204,167,125,0.2);
+      border-color: var(--ouro);
+      color: var(--ouro-claro);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="logo-area">
+      <h1>ASTROWAKE</h1>
+      <p>Painel de Leads & Funil de CRM</p>
+    </div>
+    <div class="topo-acoes">
+      <a href="index.html" class="btn" target="_blank">Ver Landing Page</a>
+      <button id="btn-atualizar" class="btn btn-ouro" type="button">🔄 Atualizar Lista</button>
+    </div>
+  </header>
+
+  <div class="kpis">
+    <div class="card-kpi">
+      <span>Total de Leads</span>
+      <strong id="total-leads">-</strong>
+    </div>
+    <div class="card-kpi">
+      <span>Novos</span>
+      <strong id="leads-novos" style="color: var(--alerta)">-</strong>
+    </div>
+    <div class="card-kpi">
+      <span>Já Chamados</span>
+      <strong id="leads-chamados" style="color: var(--info)">-</strong>
+    </div>
+    <div class="card-kpi">
+      <span>Compraram 🎉</span>
+      <strong id="leads-compraram" style="color: var(--sucesso)">-</strong>
+    </div>
+  </div>
+
+  <div class="tabela-card">
+    <div class="tabela-header">
+      <h2>Contatos Registrados</h2>
+      <div class="filtros-area">
+        <select id="filtro-crm" class="filtro-select">
+          <option value="todos">Todos os Status</option>
+          <option value="novo">🟡 Novos</option>
+          <option value="chamado">🔵 Já Chamados</option>
+          <option value="comprou">🟢 Comprou</option>
+          <option value="desistiu">🔴 Desistiu</option>
+        </select>
+        <input type="text" id="campo-busca" class="filtro-busca" placeholder="Buscar por nome ou fone...">
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>WhatsApp</th>
+            <th>Data e Hora (Brasília)</th>
+            <th>Fase do CRM</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-corpo">
+          <tr>
+            <td colspan="5" class="vazio">Carregando contatos...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="paginacao-footer">
+      <div class="paginacao-info" id="paginacao-info">
+        Mostrando 0 de 0 contatos
+      </div>
+      <div class="paginacao-botoes" id="paginacao-botoes"></div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast">Lista de contatos atualizada!</div>
+
+<script>
+  var todosLeads = [];
+  var leadsFiltrados = [];
+  var paginaAtual = 1;
+  var ITENS_POR_PAGINA = 20;
+
+  function exibirToast(msg) {
+    var t = document.getElementById('toast');
+    if (!t) return;
+    t.innerText = msg || 'Lista atualizada com sucesso!';
+    t.style.display = 'block';
+    setTimeout(function() {
+      t.style.display = 'none';
+    }, 2500);
+  }
+
+  function formatarDataBrasilia(isoStr) {
+    if (!isoStr) return '-';
+    try {
+      var s = isoStr;
+      if (!s.endsWith('Z') && !s.includes('+') && !s.includes('-')) {
+        s += 'Z';
+      }
+      var d = new Date(s);
+      return d.toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo' }) + ' ' +
+             d.toLocaleTimeString('pt-BR', { timeZone: 'America/Sao_Paulo', hour: '2-digit', minute: '2-digit' });
+    } catch (e) {
+      return isoStr;
+    }
+  }
+
+  function formatarTelefoneComDDI(tel) {
+    if (!tel) return '-';
+    var dig = tel.replace(/\D/g, '');
+    var ddi = '55';
+    var resto = dig;
+
+    if (dig.startsWith('55') && dig.length >= 12) {
+      ddi = '55';
+      resto = dig.substring(2);
+    }
+
+    if (resto.length === 11) {
+      return '+' + ddi + ' (' + resto.slice(0,2) + ') ' + resto.slice(2,7) + '-' + resto.slice(7);
+    }
+    if (resto.length === 10) {
+      return '+' + ddi + ' (' + resto.slice(0,2) + ') ' + resto.slice(2,6) + '-' + resto.slice(6);
+    }
+    return '+' + ddi + ' ' + resto;
+  }
+
+  function escapeHtml(text) {
+    if (!text) return '';
+    return String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+  }
+
+  function obterBadgeStatus(status) {
+    switch (status) {
+      case 'comprou':
+        return '<span class="badge-status comprou">🟢 Comprou</span>';
+      case 'desistiu':
+        return '<span class="badge-status desistiu">🔴 Desistiu</span>';
+      case 'chamado':
+        return '<span class="badge-status chamado">🔵 Já Chamado</span>';
+      case 'novo':
+      default:
+        return '<span class="badge-status novo">🟡 Novo</span>';
+    }
+  }
+
+  function mudarPagina(novaPagina) {
+    var totalPaginas = Math.ceil(leadsFiltrados.length / ITENS_POR_PAGINA) || 1;
+    if (novaPagina < 1 || novaPagina > totalPaginas) return;
+    paginaAtual = novaPagina;
+    renderizarTabela();
+  }
+
+  function renderizarPaginacao(totalItens, inicio, fim, totalPaginas) {
+    var infoEl = document.getElementById('paginacao-info');
+    var botoesEl = document.getElementById('paginacao-botoes');
+
+    if (totalItens === 0) {
+      infoEl.innerText = 'Nenhum contato encontrado';
+      botoesEl.innerHTML = '';
+      return;
+    }
+
+    infoEl.innerText = 'Mostrando ' + (inicio + 1) + ' a ' + Math.min(fim, totalItens) + ' de ' + totalItens + ' contatos (Máx: 20 por página)';
+
+    var botoesHtml = '';
+    botoesHtml += '<button class="btn-pag" onclick="mudarPagina(' + (paginaAtual - 1) + ')" ' + (paginaAtual === 1 ? 'disabled' : '') + '>&laquo; Anterior</button>';
+
+    for (var p = 1; p <= totalPaginas; p++) {
+      if (p === 1 || p === totalPaginas || (p >= paginaAtual - 2 && p <= paginaAtual + 2)) {
+        botoesHtml += '<button class="btn-pag ' + (p === paginaAtual ? 'ativo' : '') + '" onclick="mudarPagina(' + p + ')">' + p + '</button>';
+      } else if (p === paginaAtual - 3 || p === paginaAtual + 3) {
+        botoesHtml += '<span style="color: var(--texto-3); padding: 0 0.3rem;">...</span>';
+      }
+    }
+
+    botoesHtml += '<button class="btn-pag" onclick="mudarPagina(' + (paginaAtual + 1) + ')" ' + (paginaAtual === totalPaginas ? 'disabled' : '') + '>Próxima &raquo;</button>';
+    botoesEl.innerHTML = botoesHtml;
+  }
+
+  async function alterarStatusCRM(id, novoStatus) {
+    try {
+      var res = await fetch('/api/leads/' + id, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: novoStatus })
+      });
+      if (!res.ok) throw new Error('Erro ao atualizar status');
+      var leadAtualizado = await res.json();
+      
+      for (var i = 0; i < todosLeads.length; i++) {
+        if (todosLeads[i].id === id) {
+          todosLeads[i].status = leadAtualizado.status;
+          todosLeads[i].chamado = leadAtualizado.chamado;
+          break;
+        }
+      }
+      atualizarKPIs();
+      aplicarFiltro();
+      exibirToast('Status atualizado para: ' + novoStatus.toUpperCase());
+    } catch (err) {
+      alert('Erro ao salvar fase do CRM: ' + err.message);
+    }
+  }
+
+  function aoChamarLead(id, nome, telefone) {
+    var lead = todosLeads.find(function(l) { return l.id === id; });
+    if (lead && lead.status === 'novo') {
+      alterarStatusCRM(id, 'chamado');
+    }
+  }
+
+  function renderizarTabela() {
+    var corpo = document.getElementById('tabela-corpo');
+    var totalItens = leadsFiltrados.length;
+    var totalPaginas = Math.ceil(totalItens / ITENS_POR_PAGINA) || 1;
+
+    if (paginaAtual > totalPaginas) paginaAtual = totalPaginas;
+
+    var inicio = (paginaAtual - 1) * ITENS_POR_PAGINA;
+    var fim = inicio + ITENS_POR_PAGINA;
+    var leadsPagina = leadsFiltrados.slice(inicio, fim);
+
+    if (totalItens === 0) {
+      corpo.innerHTML = '<tr><td colspan="5" class="vazio">Nenhum lead encontrado com os filtros atuais.</td></tr>';
+      renderizarPaginacao(0, 0, 0, 0);
+      return;
+    }
+
+    var html = '';
+    for (var i = 0; i < leadsPagina.length; i++) {
+      var l = leadsPagina[i];
+      var telLimpo = l.telefone.replace(/\D/g, '');
+      if (!telLimpo.startsWith('55')) telLimpo = '55' + telLimpo;
+      var linkZap = 'https://wa.me/' + telLimpo + '?text=' + encodeURIComponent('Olá ' + l.nome + ', tudo bem? Vi seu interesse no Astrowake!');
+      var statusAtual = l.status || 'novo';
+
+      html += '<tr>' +
+        '<td>' +
+          '<div class="nome-lead">' +
+            '<strong>' + escapeHtml(l.nome) + '</strong>' +
+            obterBadgeStatus(statusAtual) +
+          '</div>' +
+        '</td>' +
+        '<td><strong>' + formatarTelefoneComDDI(l.telefone) + '</strong></td>' +
+        '<td>' + formatarDataBrasilia(l.created_at) + '</td>' +
+        '<td>' +
+          '<select class="status-select status-' + statusAtual + '" onchange="alterarStatusCRM(' + l.id + ', this.value)">' +
+            '<option value="novo" ' + (statusAtual === 'novo' ? 'selected' : '') + '>🟡 Novo</option>' +
+            '<option value="chamado" ' + (statusAtual === 'chamado' ? 'selected' : '') + '>🔵 Já Chamado</option>' +
+            '<option value="comprou" ' + (statusAtual === 'comprou' ? 'selected' : '') + '>🟢 Comprou</option>' +
+            '<option value="desistiu" ' + (statusAtual === 'desistiu' ? 'selected' : '') + '>🔴 Desistiu</option>' +
+          '</select>' +
+        '</td>' +
+        '<td>' +
+          '<a href="' + linkZap + '" target="_blank" rel="noopener" class="btn-zap" onclick="aoChamarLead(' + l.id + ')" title="Abrir conversa no WhatsApp">' +
+            '<span>Chamar</span>' +
+          '</a>' +
+        '</td>' +
+        '</tr>';
+    }
+    corpo.innerHTML = html;
+    renderizarPaginacao(totalItens, inicio, fim, totalPaginas);
+  }
+
+  function aplicarFiltro() {
+    var q = document.getElementById('campo-busca').value.toLowerCase().trim();
+    var filtroCrm = document.getElementById('filtro-crm').value;
+
+    leadsFiltrados = todosLeads.filter(function(l) {
+      var matchBusca = !q || (l.nome && l.nome.toLowerCase().indexOf(q) !== -1) || (l.telefone && l.telefone.indexOf(q) !== -1);
+      var matchCrm = filtroCrm === 'todos' || (l.status || 'novo') === filtroCrm;
+      return matchBusca && matchCrm;
+    });
+
+    paginaAtual = 1;
+    renderizarTabela();
+  }
+
+  function atualizarKPIs() {
+    document.getElementById('total-leads').innerText = todosLeads.length;
+
+    var novos = todosLeads.filter(function(l) { return !l.status || l.status === 'novo'; }).length;
+    var chamados = todosLeads.filter(function(l) { return l.status === 'chamado'; }).length;
+    var compraram = todosLeads.filter(function(l) { return l.status === 'comprou'; }).length;
+
+    document.getElementById('leads-novos').innerText = novos;
+    document.getElementById('leads-chamados').innerText = chamados;
+    document.getElementById('leads-compraram').innerText = compraram;
+  }
+
+  async function carregarLeads(manual) {
+    var btn = document.getElementById('btn-atualizar');
+    try {
+      if (btn) {
+        btn.innerText = '⏳ Atualizando...';
+        btn.classList.add('carregando');
+      }
+
+      var url = '/api/leads?limit=1000&_rnd=' + Math.random();
+      var res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) throw new Error('Falha ao carregar leads: ' + res.status);
+      var dados = await res.json();
+      todosLeads = dados;
+
+      atualizarKPIs();
+      aplicarFiltro();
+
+      if (manual) {
+        exibirToast('Lista atualizada com sucesso!');
+      }
+    } catch (err) {
+      console.error(err);
+      if (manual) alert('Erro ao atualizar contatos: ' + err.message);
+    } finally {
+      if (btn) {
+        btn.innerText = '🔄 Atualizar Lista';
+        btn.classList.remove('carregando');
+      }
+    }
+  }
+
+  document.getElementById('btn-atualizar').addEventListener('click', function(e) {
+    e.preventDefault();
+    carregarLeads(true);
+  });
+
+  document.getElementById('campo-busca').addEventListener('input', function() {
+    aplicarFiltro();
+  });
+
+  document.getElementById('filtro-crm').addEventListener('change', function() {
+    aplicarFiltro();
+  });
+
+  carregarLeads(false);
+  setInterval(function() { carregarLeads(false); }, 30000);
+</script>
+
+</body>
+</html>

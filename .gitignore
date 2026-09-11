@@ -1,3 +1,31 @@
-# nada de temporÃ¡rios de build
+# Temporários e builds locais
 _preview.html
 assets/_*.png
+frontend/assets/_*.png
+
+# Logs e arquivos de sistema
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+
+# Dependências eventuais
+node_modules/
+dist/
+coverage/
+
+# IDE e editores
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Arquivos de ambiente
+.env
+.env.local
+
