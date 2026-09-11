@@ -4,19 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Astrowake</title>
-<meta name="description" content="Astrologia aplicada à vida real. Compreenda seus padrões e tome decisões mais conscientes no amor, na carreira e na vida.">
-<meta property="og:title" content="Astrowake — Astrologia aplicada à vida real">
-<meta property="og:description" content="Quanto mais você entende quem você é, melhores se tornam as escolhas que constroem a sua vida.">
+<meta name="description" content="Astrologia aplicada Ã  vida real. Compreenda seus padrÃµes e tome decisÃµes mais conscientes no amor, na carreira e na vida.">
+<meta property="og:title" content="Astrowake â€” Astrologia aplicada Ã  vida real">
+<meta property="og:description" content="Quanto mais vocÃª entende quem vocÃª Ã©, melhores se tornam as escolhas que constroem a sua vida.">
 <meta property="og:image" content="assets/hero-mobile.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&family=Cinzel:wght@400;500&display=swap">
 <style>
 /* ============================================================
-   ASTROWAKE — página de vendas
-   Paleta extraída da própria arte do hero (hero-mobile.png).
-   Tema único e deliberadamente escuro: a página vive no mesmo
-   céu da imagem. Por isso todas as cores são pintadas
+   ASTROWAKE â€” pÃ¡gina de vendas
+   Paleta extraÃ­da da prÃ³pria arte do hero (hero-mobile.png).
+   Tema Ãºnico e deliberadamente escuro: a pÃ¡gina vive no mesmo
+   cÃ©u da imagem. Por isso todas as cores sÃ£o pintadas
    explicitamente, sem depender do tema de quem abre.
    ============================================================ */
 :root{
@@ -57,7 +57,7 @@ body{
 }
 img{max-width:100%;display:block}
 
-/* só o brilho dourado do alto, herdado da arte do hero */
+/* sÃ³ o brilho dourado do alto, herdado da arte do hero */
 body::before{
   content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
   background:radial-gradient(900px 600px at 50% -5%,
@@ -86,7 +86,7 @@ section{padding:clamp(4.5rem,11vw,7.5rem) 1.5rem}
 .col{max-width:var(--col);margin:0 auto}
 .centro{text-align:center}
 
-/* divisor ✦ — motivo tirado da própria arte */
+/* divisor âœ¦ â€” motivo tirado da prÃ³pria arte */
 .divisor{
   display:flex;align-items:center;justify-content:center;gap:1rem;
   margin:2.6rem auto;max-width:320px;color:var(--ouro);
@@ -116,7 +116,7 @@ header{
 }
 @media(min-width:900px){.marca small{display:block;margin-top:.25rem}}
 
-/* ---------- botão ---------- */
+/* ---------- botÃ£o ---------- */
 .cta{
   --altura:60px;
   display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
@@ -144,39 +144,39 @@ header{
 .header-cta{display:none}
 @media(min-width:760px){.header-cta{display:inline-flex}}
 
-/* ---------- seções de arte composta (hero e seção 2) ----------
-   Estas peças já trazem a copy desenhada. No celular sangram de
-   borda a borda; no desktop, como a proporção é vertical, viram
-   pôster emoldurado ao centro — deliberado, não quebrado.       */
+/* ---------- seÃ§Ãµes de arte composta (hero e seÃ§Ã£o 2) ----------
+   Estas peÃ§as jÃ¡ trazem a copy desenhada. No celular sangram de
+   borda a borda; no desktop, como a proporÃ§Ã£o Ã© vertical, viram
+   pÃ´ster emoldurado ao centro â€” deliberado, nÃ£o quebrado.       */
 .arte-secao{padding:0;position:relative}
 /* o hero sobe no empilhamento para que a ponte que mora dentro dele
-   possa pintar por cima da aresta da seção seguinte */
+   possa pintar por cima da aresta da seÃ§Ã£o seguinte */
 .hero{z-index:2}
 
 /* A COSTURA.
-   As peças já nascem quase pretas nas próprias bordas (luminância 5
-   de 255 no pé). Então o corte NÃO é diferença de cor: é o salto de
-   um chão chapado para um céu estrelado, que o olho lê como "começou
+   As peÃ§as jÃ¡ nascem quase pretas nas prÃ³prias bordas (luminÃ¢ncia 5
+   de 255 no pÃ©). EntÃ£o o corte NÃƒO Ã© diferenÃ§a de cor: Ã© o salto de
+   um chÃ£o chapado para um cÃ©u estrelado, que o olho lÃª como "comeÃ§ou
    outra imagem".
 
-   Três coisas resolvem, e as três precisam agir juntas:
-   1. nenhuma linha desenhada na junta  — hairline só no pôster do desktop;
-   2. máscara curta e com curva  — degradê linear sobre preto deixa
-      banda visível, então a rampa é escalonada à mão;
-   3. halo que continua a atmosfera da arte para fora dela, para não
-      existir zona morta contra a qual o céu se destaque.
+   TrÃªs coisas resolvem, e as trÃªs precisam agir juntas:
+   1. nenhuma linha desenhada na junta  â€” hairline sÃ³ no pÃ´ster do desktop;
+   2. mÃ¡scara curta e com curva  â€” degradÃª linear sobre preto deixa
+      banda visÃ­vel, entÃ£o a rampa Ã© escalonada Ã  mÃ£o;
+   3. halo que continua a atmosfera da arte para fora dela, para nÃ£o
+      existir zona morta contra a qual o cÃ©u se destaque.
 
-   A máscara é deliberadamente CURTA (3,5%): mais que isso invade o
-   conteúdo. No hero, "+5.000 atendimentos" vive a 88% da altura e o
-   degradê antigo, de 22%, estava apagando a microprova. */
+   A mÃ¡scara Ã© deliberadamente CURTA (3,5%): mais que isso invade o
+   conteÃºdo. No hero, "+5.000 atendimentos" vive a 88% da altura e o
+   degradÃª antigo, de 22%, estava apagando a microprova. */
 .arte{position:relative;margin:0 auto;width:100%}
 .arte img{width:100%;height:auto;display:block}
 
-/* UMA MECÂNICA POR JUNTA, nunca duas.
-   Onde existe ponte, a ponte resolve — máscara junto só brigaria com
+/* UMA MECÃ‚NICA POR JUNTA, nunca duas.
+   Onde existe ponte, a ponte resolve â€” mÃ¡scara junto sÃ³ brigaria com
    ela e devolvia um degrau de 8,6 que eu mesmo tinha criado.
-   Esta máscara é só para a aresta que encosta em texto, não em arte:
-   o pé da seção 2, onde não há ponte. */
+   Esta mÃ¡scara Ã© sÃ³ para a aresta que encosta em texto, nÃ£o em arte:
+   o pÃ© da seÃ§Ã£o 2, onde nÃ£o hÃ¡ ponte. */
 .arte.fecha-embaixo img{
   -webkit-mask-image:var(--fecho);mask-image:var(--fecho);
   -webkit-mask-size:100% 100%;mask-size:100% 100%;
@@ -189,8 +189,8 @@ header{
 }
 @media(min-width:860px){
   .arte-secao{padding:clamp(3.5rem,7vw,6rem) 1.5rem 0}
-  /* no desktop a peça é um pôster: aí a moldura é intencional e a
-     máscara sai de cena, senão as bordas do quadro ficam lavadas */
+  /* no desktop a peÃ§a Ã© um pÃ´ster: aÃ­ a moldura Ã© intencional e a
+     mÃ¡scara sai de cena, senÃ£o as bordas do quadro ficam lavadas */
   .arte{
     max-width:560px;border:1px solid var(--linha);border-radius:var(--r);
     overflow:hidden;
@@ -201,20 +201,20 @@ header{
   .arte.fecha-embaixo img{-webkit-mask-image:none;mask-image:none}
 }
 /* A PONTE.
-   O vão entre o bloco 1 e o bloco 2 é onde mora o botão. Antes ele
-   era cor chapada, e é por isso que as duas arestas apareciam: cada
+   O vÃ£o entre o bloco 1 e o bloco 2 Ã© onde mora o botÃ£o. Antes ele
+   era cor chapada, e Ã© por isso que as duas arestas apareciam: cada
    arte terminava contra um plano liso.
-   A ponte é uma imagem de 4 KB gerada das próprias peças — a aresta
-   de baixo do hero e a aresta de cima da seção 2, borradas até
-   virarem campo de cor e misturadas em smoothstep. Ela AVANÇA 26px
-   por dentro de cada arte, com alfa em rampa, então a sobreposição
-   borra a borda em vez de cobri-la. Não há aresta porque não há mais
+   A ponte Ã© uma imagem de 4 KB gerada das prÃ³prias peÃ§as â€” a aresta
+   de baixo do hero e a aresta de cima da seÃ§Ã£o 2, borradas atÃ©
+   virarem campo de cor e misturadas em smoothstep. Ela AVANÃ‡A 26px
+   por dentro de cada arte, com alfa em rampa, entÃ£o a sobreposiÃ§Ã£o
+   borra a borda em vez de cobri-la. NÃ£o hÃ¡ aresta porque nÃ£o hÃ¡ mais
    nada com contorno ali. */
 .ponte{
   position:relative;z-index:3;   /* precisa pintar por cima da arte seguinte */
-  /* assimétrico: 18px por dentro do hero, 60px por dentro da seção 2.
-     Do lado do hero só existem 25px de escuro limpo abaixo de "MÉTODO
-     DESENVOLVIDO POR CRASSUS GOBBI" — entrar mais borraria a credencial. */
+  /* assimÃ©trico: 18px por dentro do hero, 60px por dentro da seÃ§Ã£o 2.
+     Do lado do hero sÃ³ existem 25px de escuro limpo abaixo de "MÃ‰TODO
+     DESENVOLVIDO POR CRASSUS GOBBI" â€” entrar mais borraria a credencial. */
   margin:-18px 0 -60px;padding:18px 0 60px;
   background:url("assets/ponte.webp") no-repeat center/100% 100%;
 }
@@ -223,11 +223,11 @@ header{
   padding:2.6rem 1.5rem clamp(3.5rem,8vw,5rem);text-align:center;
 }
 @media(min-width:860px){
-  /* no desktop as peças são pôsteres emoldurados e não se encostam:
-     não existe aresta para dissolver */
+  /* no desktop as peÃ§as sÃ£o pÃ´steres emoldurados e nÃ£o se encostam:
+     nÃ£o existe aresta para dissolver */
   .ponte{margin:0;padding:0;background:none}
 }
-/* a seção 2 fecha sem CTA: só respiro antes do próximo bloco */
+/* a seÃ§Ã£o 2 fecha sem CTA: sÃ³ respiro antes do prÃ³ximo bloco */
 .arte-secao.solta{padding-bottom:clamp(3.5rem,8vw,5.5rem)}
 
 /* ---------- listas ---------- */
@@ -239,7 +239,7 @@ header{
 }
 .perguntas li:last-child{border-bottom:0}
 .perguntas li::before{
-  content:"✦";position:absolute;left:0;top:.95rem;
+  content:"âœ¦";position:absolute;left:0;top:.95rem;
   font-size:.6rem;color:var(--ouro-fundo);
 }
 
@@ -255,7 +255,7 @@ header{
   background:var(--ouro);box-shadow:0 0 12px rgba(204,167,125,.6);
 }
 
-/* pares antes → depois */
+/* pares antes â†’ depois */
 .pares{display:grid;gap:1rem;margin:0 0 1.5rem;padding:0;list-style:none}
 .par{
   display:grid;gap:.55rem;padding:1.15rem 1.25rem;
@@ -273,7 +273,7 @@ header{
 .par .antes p{color:var(--texto-3)}
 .par .depois p{color:var(--texto)}
 
-/* ---------- arquétipos (o método) ---------- */
+/* ---------- arquÃ©tipos (o mÃ©todo) ---------- */
 .arquetipos{display:grid;gap:1.1rem;margin-top:2.6rem}
 @media(min-width:820px){.arquetipos{grid-template-columns:repeat(3,1fr)}}
 .arq{
@@ -295,7 +295,7 @@ header{
 }
 .arq p.agora{margin:.35rem 0 0;font-size:.98rem;line-height:1.55;color:var(--texto-2)}
 
-/* ---------- currículo ---------- */
+/* ---------- currÃ­culo ---------- */
 .modulos{counter-reset:m;list-style:none;margin:2rem 0 0;padding:0}
 .modulos li{
   counter-increment:m;position:relative;
@@ -312,7 +312,7 @@ header{
 .modulos h3{font-size:1.06rem;margin-bottom:.25rem}
 .modulos p{margin:0;font-size:.96rem;line-height:1.55;color:var(--texto-3)}
 
-/* ---------- cartões de bônus ---------- */
+/* ---------- cartÃµes de bÃ´nus ---------- */
 .bonus{display:grid;gap:1.2rem;margin-top:2.4rem}
 @media(min-width:900px){.bonus{grid-template-columns:repeat(3,1fr);align-items:stretch}}
 .cartao{
@@ -340,8 +340,8 @@ header{
 
 /* ---------- oferta ---------- */
 .oferta{
-  /* translúcido de propósito: um fundo opaco aqui devolveria uma
-     chapa lisa no meio da página e quebraria a continuidade do céu */
+  /* translÃºcido de propÃ³sito: um fundo opaco aqui devolveria uma
+     chapa lisa no meio da pÃ¡gina e quebraria a continuidade do cÃ©u */
   background:
     radial-gradient(120% 70% at 50% 0%, rgba(204,167,125,.12), transparent 65%),
     linear-gradient(180deg,rgba(7,12,22,.72),rgba(4,7,14,.55));
@@ -385,7 +385,7 @@ header{
 }
 .preco .valor sup{font-size:.34em;vertical-align:.9em;margin-right:.14em;letter-spacing:.05em}
 
-/* ---------- objeções ---------- */
+/* ---------- objeÃ§Ãµes ---------- */
 .objecao{
   padding:1.9rem 1.7rem;border-radius:var(--r);
   border:1px solid var(--linha);border-left:2px solid var(--ouro);
@@ -409,7 +409,7 @@ header{
   color:var(--texto-3);padding-left:1.5rem;position:relative;
 }
 .nao-e li::before{
-  content:"—";position:absolute;left:0;color:var(--ouro-fundo);
+  content:"â€”";position:absolute;left:0;color:var(--ouro-fundo);
 }
 
 /* ---------- fechamento ---------- */
@@ -418,7 +418,7 @@ header{
 }
 .fecho h2{font-size:clamp(2rem,6vw,3.1rem)}
 
-/* ---------- rodapé ---------- */
+/* ---------- rodapÃ© ---------- */
 footer{
   padding:3.2rem 1.5rem 7.5rem;text-align:center;
   border-top:1px solid var(--linha);
@@ -441,9 +441,9 @@ footer .marca{font-size:.85rem}
   color:var(--texto-3);margin:1.6rem 0 0;line-height:1.9;
 }
 .empresa b{font-weight:400;color:var(--texto-2);font-variant-numeric:tabular-nums}
-/* O aviso da Meta é exigência prática de quem anuncia: precisa ser
-   legível, não escondido. Texto em caixa baixa e medida curta, porque
-   é para ser lido, ao contrário do resto do juridiquês por aí. */
+/* O aviso da Meta Ã© exigÃªncia prÃ¡tica de quem anuncia: precisa ser
+   legÃ­vel, nÃ£o escondido. Texto em caixa baixa e medida curta, porque
+   Ã© para ser lido, ao contrÃ¡rio do resto do juridiquÃªs por aÃ­. */
 .aviso-meta{
   max-width:560px;margin:2.2rem auto 0;padding:1.1rem 1.3rem;
   border:1px solid var(--linha);border-radius:var(--r);
@@ -457,7 +457,7 @@ footer .marca{font-size:.85rem}
   text-transform:uppercase;color:var(--texto-3);margin:2rem 0 0;
 }
 
-/* ---------- barra fixa de CTA (móvel) ---------- */
+/* ---------- barra fixa de CTA (mÃ³vel) ---------- */
 .barra{
   position:fixed;left:0;right:0;bottom:0;z-index:60;
   padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px));
@@ -568,7 +568,7 @@ footer .marca{font-size:.85rem}
 <header>
   <a class="marca" href="#topo">
     ASTROWAKE
-    <small>Astrologia aplicada à vida real</small>
+    <small>Astrologia aplicada Ã  vida real</small>
   </a>
   <a class="cta pequeno header-cta" href="#oferta">Quero entrar no Astrowake</a>
 </header>
@@ -579,87 +579,87 @@ footer .marca{font-size:.85rem}
   <section class="hero arte-secao">
     <div class="arte">
       <img src="assets/hero-mobile.webp" width="941" height="1672"
-           alt="Astrowake — astrologia aplicada à vida real. Quanto mais você entende quem você é, melhores se tornam as escolhas que constroem a sua vida. Método desenvolvido por Crassus Gobbi, com mais de 5.000 atendimentos e mais de 10 anos de experiência."
+           alt="Astrowake â€” astrologia aplicada Ã  vida real. Quanto mais vocÃª entende quem vocÃª Ã©, melhores se tornam as escolhas que constroem a sua vida. MÃ©todo desenvolvido por Crassus Gobbi, com mais de 5.000 atendimentos e mais de 10 anos de experiÃªncia."
            fetchpriority="high" decoding="async">
     </div>
     <div class="ponte">
       <div class="hero-acao">
         <a class="cta largo" href="#oferta">Quero entrar no Astrowake</a>
-        <p class="sob-cta">Acesso imediato · 1 ano de acesso · conteúdo online</p>
+        <p class="sob-cta">Acesso imediato Â· 1 ano de acesso Â· conteÃºdo online</p>
       </div>
     </div>
   </section>
 
   <!-- ============ 2. A GRANDE IDEIA ============
-       Arte composta: a copy do bloco já vem desenhada na peça.
+       Arte composta: a copy do bloco jÃ¡ vem desenhada na peÃ§a.
        O texto abaixo vive no alt, para leitor de tela e busca.  -->
   <section class="arte-secao solta" aria-label="A grande ideia">
-    <!-- sem .revela de propósito: o translateY da entrada abriria,
+    <!-- sem .revela de propÃ³sito: o translateY da entrada abriria,
          por meio segundo, exatamente a fresta que a ponte resolve.
-         Sem máscara no topo também: quem dissolve essa aresta é a
-         ponte, por cima. Duas mecânicas no mesmo lugar brigariam.
-         Só o PÉ leva máscara, porque ali a arte encosta em texto. -->
+         Sem mÃ¡scara no topo tambÃ©m: quem dissolve essa aresta Ã© a
+         ponte, por cima. Duas mecÃ¢nicas no mesmo lugar brigariam.
+         SÃ³ o PÃ‰ leva mÃ¡scara, porque ali a arte encosta em texto. -->
     <div class="arte fecha-embaixo">
-      <!-- sem loading="lazy": é a segunda tela, chega em menos de um
-           scroll, e vi ela entrar em branco na primeira medição -->
+      <!-- sem loading="lazy": Ã© a segunda tela, chega em menos de um
+           scroll, e vi ela entrar em branco na primeira mediÃ§Ã£o -->
       <img src="assets/secao-2.webp" width="941" height="1672" decoding="async"
-           alt="Você toma decisões todos os dias. Mas quase ninguém ensina você a entender quem está tomando essas decisões. Por que você se envolve com determinadas pessoas? Por que algumas situações profissionais se repetem? Por que certos ambientes despertam o melhor de você e outros parecem consumir toda a sua energia? Por que algumas escolhas parecem tão naturais enquanto outras exigem um esforço enorme para serem sustentadas? Existe uma camada por trás das suas escolhas que nem sempre é consciente. E quanto mais você compreende essa camada, mais capacidade você desenvolve para escolher de forma intencional. É justamente aí que a astrologia pode deixar de ser entretenimento e se tornar uma ferramenta real de autoconhecimento.">
+           alt="VocÃª toma decisÃµes todos os dias. Mas quase ninguÃ©m ensina vocÃª a entender quem estÃ¡ tomando essas decisÃµes. Por que vocÃª se envolve com determinadas pessoas? Por que algumas situaÃ§Ãµes profissionais se repetem? Por que certos ambientes despertam o melhor de vocÃª e outros parecem consumir toda a sua energia? Por que algumas escolhas parecem tÃ£o naturais enquanto outras exigem um esforÃ§o enorme para serem sustentadas? Existe uma camada por trÃ¡s das suas escolhas que nem sempre Ã© consciente. E quanto mais vocÃª compreende essa camada, mais capacidade vocÃª desenvolve para escolher de forma intencional. Ã‰ justamente aÃ­ que a astrologia pode deixar de ser entretenimento e se tornar uma ferramenta real de autoconhecimento.">
     </div>
   </section>
 
   <!-- ============ 3. O PROBLEMA ============ -->
   <section style="background:linear-gradient(180deg,transparent,rgba(10,18,32,.55),transparent)">
     <div class="col revela">
-      <p class="rotulo">O problema não é falta de informação</p>
-      <h2>Você reconhece os padrões. O que falta é o mapa que os organiza.</h2>
-      <p>Talvez você já tenha feito terapia, lido livros, acompanhado conteúdos de desenvolvimento pessoal e aprendido muito sobre si. Mas ainda existem comportamentos que parecem difíceis de explicar.</p>
-      <p>Você reconhece algumas tendências. Percebe alguns padrões. Sabe até quando determinada situação está se repetindo. Mas nem sempre entende de onde aquilo vem ou como diferentes partes da sua personalidade se conectam.</p>
-      <p class="forte">O mapa astral organiza justamente essas camadas. Ele mostra tendências, necessidades, formas de agir, maneiras de se relacionar, pontos de tensão, talentos e diferentes áreas da vida.</p>
-      <p>O problema é que a astrologia costuma ser ensinada de uma forma tão complexa que a maioria das pessoas nunca consegue chegar nessa profundidade.</p>
+      <p class="rotulo">O problema nÃ£o Ã© falta de informaÃ§Ã£o</p>
+      <h2>VocÃª reconhece os padrÃµes. O que falta Ã© o mapa que os organiza.</h2>
+      <p>Talvez vocÃª jÃ¡ tenha feito terapia, lido livros, acompanhado conteÃºdos de desenvolvimento pessoal e aprendido muito sobre si. Mas ainda existem comportamentos que parecem difÃ­ceis de explicar.</p>
+      <p>VocÃª reconhece algumas tendÃªncias. Percebe alguns padrÃµes. Sabe atÃ© quando determinada situaÃ§Ã£o estÃ¡ se repetindo. Mas nem sempre entende de onde aquilo vem ou como diferentes partes da sua personalidade se conectam.</p>
+      <p class="forte">O mapa astral organiza justamente essas camadas. Ele mostra tendÃªncias, necessidades, formas de agir, maneiras de se relacionar, pontos de tensÃ£o, talentos e diferentes Ã¡reas da vida.</p>
+      <p>O problema Ã© que a astrologia costuma ser ensinada de uma forma tÃ£o complexa que a maioria das pessoas nunca consegue chegar nessa profundidade.</p>
     </div>
   </section>
 
-  <!-- ============ 4. NÃO PRECISA SER ENCICLOPÉDIA ============ -->
+  <!-- ============ 4. NÃƒO PRECISA SER ENCICLOPÃ‰DIA ============ -->
   <section>
     <div class="col revela">
-      <p class="rotulo">Astrologia não precisa ser uma enciclopédia</p>
-      <h2>Um mapa não é uma coleção de símbolos isolados. Ele é <em>uma história</em>.</h2>
-      <p>Você não precisa decorar centenas de significados para começar a compreender um mapa. Sol em um signo. Lua em outro. Ascendente. Vênus. Marte. Casas. Aspectos.</p>
-      <p>Quando tudo isso é ensinado como uma lista interminável de definições, a astrologia começa a parecer um idioma impossível.</p>
-      <p class="forte">E quando você aprende a entender os personagens dessa história, tudo começa a fazer muito mais sentido.</p>
+      <p class="rotulo">Astrologia nÃ£o precisa ser uma enciclopÃ©dia</p>
+      <h2>Um mapa nÃ£o Ã© uma coleÃ§Ã£o de sÃ­mbolos isolados. Ele Ã© <em>uma histÃ³ria</em>.</h2>
+      <p>VocÃª nÃ£o precisa decorar centenas de significados para comeÃ§ar a compreender um mapa. Sol em um signo. Lua em outro. Ascendente. VÃªnus. Marte. Casas. Aspectos.</p>
+      <p>Quando tudo isso Ã© ensinado como uma lista interminÃ¡vel de definiÃ§Ãµes, a astrologia comeÃ§a a parecer um idioma impossÃ­vel.</p>
+      <p class="forte">E quando vocÃª aprende a entender os personagens dessa histÃ³ria, tudo comeÃ§a a fazer muito mais sentido.</p>
     </div>
   </section>
 
-  <!-- ============ 5. O MÉTODO ============ -->
+  <!-- ============ 5. O MÃ‰TODO ============ -->
   <section style="background:linear-gradient(180deg,transparent,rgba(10,18,32,.6),transparent)">
     <div class="col revela">
-      <p class="rotulo">O método</p>
-      <h2>Associação Arquetípica Viva</h2>
-      <p>Esse é o princípio que conduz o Astrowake. Em vez de aprender astrologia apenas pela memorização, você começa a associar os arquétipos a comportamentos, pessoas, situações e experiências que já conhece.</p>
+      <p class="rotulo">O mÃ©todo</p>
+      <h2>AssociaÃ§Ã£o ArquetÃ­pica Viva</h2>
+      <p>Esse Ã© o princÃ­pio que conduz o Astrowake. Em vez de aprender astrologia apenas pela memorizaÃ§Ã£o, vocÃª comeÃ§a a associar os arquÃ©tipos a comportamentos, pessoas, situaÃ§Ãµes e experiÃªncias que jÃ¡ conhece.</p>
 
       <div class="arquetipos">
         <article class="arq">
-          <div class="glifo" aria-hidden="true">♂</div>
+          <div class="glifo" aria-hidden="true">â™‚</div>
           <h3>Marte</h3>
-          <p class="antes-txt">Deixa de ser um símbolo num livro.</p>
-          <p class="agora">Você começa a enxergar Marte na iniciativa, na coragem, no conflito, no desejo e na maneira como alguém parte para a ação.</p>
+          <p class="antes-txt">Deixa de ser um sÃ­mbolo num livro.</p>
+          <p class="agora">VocÃª comeÃ§a a enxergar Marte na iniciativa, na coragem, no conflito, no desejo e na maneira como alguÃ©m parte para a aÃ§Ã£o.</p>
         </article>
         <article class="arq">
-          <div class="glifo" aria-hidden="true">♀</div>
-          <h3>Vênus</h3>
-          <p class="antes-txt">Deixa de ser “o planeta do amor”.</p>
-          <p class="agora">Você começa a perceber Vênus naquilo que alguém valoriza, deseja, aprecia e na forma como estabelece vínculos.</p>
+          <div class="glifo" aria-hidden="true">â™€</div>
+          <h3>VÃªnus</h3>
+          <p class="antes-txt">Deixa de ser â€œo planeta do amorâ€.</p>
+          <p class="agora">VocÃª comeÃ§a a perceber VÃªnus naquilo que alguÃ©m valoriza, deseja, aprecia e na forma como estabelece vÃ­nculos.</p>
         </article>
         <article class="arq">
-          <div class="glifo" aria-hidden="true">♄</div>
+          <div class="glifo" aria-hidden="true">â™„</div>
           <h3>Saturno</h3>
           <p class="antes-txt">Deixa de ser apenas um conceito.</p>
-          <p class="agora">Você começa a reconhecê-lo nos limites, responsabilidades, medos, estruturas e processos de amadurecimento.</p>
+          <p class="agora">VocÃª comeÃ§a a reconhecÃª-lo nos limites, responsabilidades, medos, estruturas e processos de amadurecimento.</p>
         </article>
       </div>
 
-      <div class="divisor" aria-hidden="true"><span>✦</span></div>
-      <p class="forte centro" style="font-size:1.2rem">Você deixa de apenas decorar astrologia e começa a enxergá-la acontecendo na vida.</p>
+      <div class="divisor" aria-hidden="true"><span>âœ¦</span></div>
+      <p class="forte centro" style="font-size:1.2rem">VocÃª deixa de apenas decorar astrologia e comeÃ§a a enxergÃ¡-la acontecendo na vida.</p>
     </div>
   </section>
 
@@ -667,146 +667,146 @@ footer .marca{font-size:.85rem}
   <section>
     <div class="col revela">
       <p class="rotulo">O que muda</p>
-      <h2>Autoconhecimento não serve apenas para saber mais sobre você. Ele muda a qualidade das suas escolhas.</h2>
-      <p>Quando você entende melhor a sua própria natureza, começa a perceber com mais clareza:</p>
+      <h2>Autoconhecimento nÃ£o serve apenas para saber mais sobre vocÃª. Ele muda a qualidade das suas escolhas.</h2>
+      <p>Quando vocÃª entende melhor a sua prÃ³pria natureza, comeÃ§a a perceber com mais clareza:</p>
       <ul class="checks">
-        <li>o que realmente faz sentido para você;</li>
+        <li>o que realmente faz sentido para vocÃª;</li>
         <li>quais ambientes favorecem seus talentos;</li>
-        <li>quais padrões aparecem nos seus relacionamentos;</li>
-        <li>como você reage sob pressão;</li>
+        <li>quais padrÃµes aparecem nos seus relacionamentos;</li>
+        <li>como vocÃª reage sob pressÃ£o;</li>
         <li>o que costuma provocar conflito;</li>
-        <li>o que você precisa para se sentir realizada;</li>
-        <li>e quais características fazem parte de você, mesmo quando tentou escondê-las para se adaptar.</li>
+        <li>o que vocÃª precisa para se sentir realizada;</li>
+        <li>e quais caracterÃ­sticas fazem parte de vocÃª, mesmo quando tentou escondÃª-las para se adaptar.</li>
       </ul>
-      <div class="divisor" aria-hidden="true"><span>✦</span></div>
-      <p class="centro forte">E essa compreensão começa naturalmente a atravessar todas as áreas da sua vida.</p>
+      <div class="divisor" aria-hidden="true"><span>âœ¦</span></div>
+      <p class="centro forte">E essa compreensÃ£o comeÃ§a naturalmente a atravessar todas as Ã¡reas da sua vida.</p>
       <p class="centro" style="font-family:var(--sans);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ouro);line-height:2.2">
-        Relacionamentos · Carreira · Família · Escolhas<br>Limites · Projetos · Direção
+        Relacionamentos Â· Carreira Â· FamÃ­lia Â· Escolhas<br>Limites Â· Projetos Â· DireÃ§Ã£o
       </p>
     </div>
   </section>
 
-  <!-- ============ 7. PARA QUEM É ============ -->
+  <!-- ============ 7. PARA QUEM Ã‰ ============ -->
   <section style="background:linear-gradient(180deg,transparent,rgba(10,18,32,.55),transparent)">
     <div class="col revela">
-      <p class="rotulo">Para quem é o Astrowake</p>
+      <p class="rotulo">Para quem Ã© o Astrowake</p>
       <h2>Para quem quer compreender astrologia sem transformar isso em uma segunda faculdade.</h2>
-      <p>Ele é especialmente para você que:</p>
+      <p>Ele Ã© especialmente para vocÃª que:</p>
       <ul class="checks">
-        <li>já se interessa por autoconhecimento e sente que existe muito mais para compreender sobre si;</li>
-        <li>já olhou para um mapa astral, mas encontrou tantos símbolos que não soube por onde começar;</li>
-        <li>consome astrologia, mas sente que conteúdos sobre signo solar já ficaram superficiais demais;</li>
-        <li>quer compreender melhor seus padrões afetivos, profissionais e emocionais;</li>
-        <li>gostaria de interpretar o próprio mapa sem depender sempre da interpretação de outra pessoa;</li>
-        <li>ou simplesmente deseja uma linguagem nova para observar a si mesma e a própria vida.</li>
+        <li>jÃ¡ se interessa por autoconhecimento e sente que existe muito mais para compreender sobre si;</li>
+        <li>jÃ¡ olhou para um mapa astral, mas encontrou tantos sÃ­mbolos que nÃ£o soube por onde comeÃ§ar;</li>
+        <li>consome astrologia, mas sente que conteÃºdos sobre signo solar jÃ¡ ficaram superficiais demais;</li>
+        <li>quer compreender melhor seus padrÃµes afetivos, profissionais e emocionais;</li>
+        <li>gostaria de interpretar o prÃ³prio mapa sem depender sempre da interpretaÃ§Ã£o de outra pessoa;</li>
+        <li>ou simplesmente deseja uma linguagem nova para observar a si mesma e a prÃ³pria vida.</li>
       </ul>
-      <div class="divisor" aria-hidden="true"><span>✦</span></div>
-      <p class="centro forte" style="font-size:1.18rem">Você não precisa querer trabalhar como astrólogo. Você pode aprender astrologia simplesmente porque deseja compreender melhor a si mesmo.</p>
+      <div class="divisor" aria-hidden="true"><span>âœ¦</span></div>
+      <p class="centro forte" style="font-size:1.18rem">VocÃª nÃ£o precisa querer trabalhar como astrÃ³logo. VocÃª pode aprender astrologia simplesmente porque deseja compreender melhor a si mesmo.</p>
     </div>
   </section>
 
-  <!-- ============ 8. O QUE VOCÊ RECEBE ============ -->
+  <!-- ============ 8. O QUE VOCÃŠ RECEBE ============ -->
   <section>
     <div class="col revela">
-      <p class="rotulo">O que você recebe</p>
-      <h2>Formação Astrowake</h2>
-      <p class="forte">Do zero à interpretação prática.</p>
-      <p>Um caminho progressivo para você compreender os fundamentos da astrologia e aprender a conectar os diferentes elementos de um mapa.</p>
+      <p class="rotulo">O que vocÃª recebe</p>
+      <h2>FormaÃ§Ã£o Astrowake</h2>
+      <p class="forte">Do zero Ã  interpretaÃ§Ã£o prÃ¡tica.</p>
+      <p>Um caminho progressivo para vocÃª compreender os fundamentos da astrologia e aprender a conectar os diferentes elementos de um mapa.</p>
 
       <ol class="modulos">
-        <li><h3>Instruções iniciais</h3><p>Entenda como utilizar a formação e qual caminho seguir para aproveitar melhor o método.</p></li>
-        <li><h3>Introdução à Astrologia</h3><p>Construa a base necessária para compreender o mapa como um sistema completo.</p></li>
-        <li><h3>Os Personagens da Aventura</h3><p>Conheça os arquétipos que formam a narrativa astrológica e comece a reconhecê-los na vida real.</p></li>
-        <li><h3>Os Signos</h3><p>Entenda as diferentes formas de expressão da energia zodiacal sem depender de definições decoradas.</p></li>
-        <li><h3>Planetas nos Signos</h3><p>Aprenda a combinar planeta + signo e comece a desenvolver interpretações próprias.</p></li>
-        <li><h3>Casas Astrológicas</h3><p>Descubra em quais áreas da vida cada energia se manifesta.</p></li>
-        <li><h3>Aspectos</h3><p>Entenda como os diferentes elementos do mapa conversam entre si, criando facilidades, tensões e dinâmicas internas.</p></li>
-        <li><h3>Kiron</h3><p>Explore temas ligados às vulnerabilidades, feridas e processos de desenvolvimento revelados pelo mapa.</p></li>
-        <li><h3>Interpretação</h3><p>Aprenda a unir os elementos e transformar informações separadas em uma leitura coerente.</p></li>
-        <li><h3>Webinars</h3><p>Aulas e aprofundamentos para observar conceitos sendo aplicados a casos e situações reais.</p></li>
-        <li><h3>Bônus</h3><p>Conteúdos complementares para aprofundar e acelerar sua compreensão.</p></li>
+        <li><h3>InstruÃ§Ãµes iniciais</h3><p>Entenda como utilizar a formaÃ§Ã£o e qual caminho seguir para aproveitar melhor o mÃ©todo.</p></li>
+        <li><h3>IntroduÃ§Ã£o Ã  Astrologia</h3><p>Construa a base necessÃ¡ria para compreender o mapa como um sistema completo.</p></li>
+        <li><h3>Os Personagens da Aventura</h3><p>ConheÃ§a os arquÃ©tipos que formam a narrativa astrolÃ³gica e comece a reconhecÃª-los na vida real.</p></li>
+        <li><h3>Os Signos</h3><p>Entenda as diferentes formas de expressÃ£o da energia zodiacal sem depender de definiÃ§Ãµes decoradas.</p></li>
+        <li><h3>Planetas nos Signos</h3><p>Aprenda a combinar planeta + signo e comece a desenvolver interpretaÃ§Ãµes prÃ³prias.</p></li>
+        <li><h3>Casas AstrolÃ³gicas</h3><p>Descubra em quais Ã¡reas da vida cada energia se manifesta.</p></li>
+        <li><h3>Aspectos</h3><p>Entenda como os diferentes elementos do mapa conversam entre si, criando facilidades, tensÃµes e dinÃ¢micas internas.</p></li>
+        <li><h3>Kiron</h3><p>Explore temas ligados Ã s vulnerabilidades, feridas e processos de desenvolvimento revelados pelo mapa.</p></li>
+        <li><h3>InterpretaÃ§Ã£o</h3><p>Aprenda a unir os elementos e transformar informaÃ§Ãµes separadas em uma leitura coerente.</p></li>
+        <li><h3>Webinars</h3><p>Aulas e aprofundamentos para observar conceitos sendo aplicados a casos e situaÃ§Ãµes reais.</p></li>
+        <li><h3>BÃ´nus</h3><p>ConteÃºdos complementares para aprofundar e acelerar sua compreensÃ£o.</p></li>
       </ol>
     </div>
   </section>
 
-  <!-- ============ 9–11. BÔNUS E COMUNIDADE ============ -->
+  <!-- ============ 9â€“11. BÃ”NUS E COMUNIDADE ============ -->
   <section style="background:linear-gradient(180deg,transparent,rgba(10,18,32,.6),transparent)">
     <div class="col revela">
-      <p class="rotulo">Além da formação</p>
-      <h2>Três camadas que acompanham você depois da primeira aula.</h2>
+      <p class="rotulo">AlÃ©m da formaÃ§Ã£o</p>
+      <h2>TrÃªs camadas que acompanham vocÃª depois da primeira aula.</h2>
 
       <div class="bonus">
         <article class="cartao">
-          <p class="selo">Bônus 01</p>
-          <h3>Astrowake Trânsitos</h3>
-          <p>Depois de compreender quem você é, aprenda a observar os ciclos que está vivendo. O mapa natal representa uma estrutura; os trânsitos mostram o céu em movimento interagindo com essa estrutura ao longo do tempo.</p>
-          <p class="planetas">Saturno · Urano · Plutão</p>
-          <p>Uma nova camada de leitura para compreender períodos de amadurecimento, transformação, ruptura e mudança.</p>
+          <p class="selo">BÃ´nus 01</p>
+          <h3>Astrowake TrÃ¢nsitos</h3>
+          <p>Depois de compreender quem vocÃª Ã©, aprenda a observar os ciclos que estÃ¡ vivendo. O mapa natal representa uma estrutura; os trÃ¢nsitos mostram o cÃ©u em movimento interagindo com essa estrutura ao longo do tempo.</p>
+          <p class="planetas">Saturno Â· Urano Â· PlutÃ£o</p>
+          <p>Uma nova camada de leitura para compreender perÃ­odos de amadurecimento, transformaÃ§Ã£o, ruptura e mudanÃ§a.</p>
           <p class="valor">Valor percebido <b>R$&nbsp;997</b></p>
         </article>
 
         <article class="cartao">
-          <p class="selo">Bônus 02</p>
+          <p class="selo">BÃ´nus 02</p>
           <h3>Apostila Ilustrada Astrowake</h3>
-          <p>Você não precisa depender da memória. A apostila funciona como material de apoio e consulta durante o seu aprendizado.</p>
-          <p>Um conteúdo organizado para que você possa rever conceitos, símbolos e associações sempre que precisar — ideal para acompanhar as aulas e construir sua própria referência de estudo.</p>
+          <p>VocÃª nÃ£o precisa depender da memÃ³ria. A apostila funciona como material de apoio e consulta durante o seu aprendizado.</p>
+          <p>Um conteÃºdo organizado para que vocÃª possa rever conceitos, sÃ­mbolos e associaÃ§Ãµes sempre que precisar â€” ideal para acompanhar as aulas e construir sua prÃ³pria referÃªncia de estudo.</p>
           <p class="valor">Valor percebido <b>R$&nbsp;97</b></p>
         </article>
 
         <article class="cartao">
           <p class="selo">Comunidade</p>
           <h3>Comunidade VIP + encontro mensal</h3>
-          <p>Aprender astrologia se torna muito mais fácil quando você começa a observar mapas, histórias e interpretações reais. Um espaço fechado para troca, aprofundamento e conexão entre alunos.</p>
-          <p class="planetas">1 encontro por mês com Crassus</p>
-          <p>Para análise de casos, dúvidas, interpretações e aprofundamentos — porque algumas das maiores compreensões surgem quando você vê a astrologia acontecendo na vida de alguém.</p>
+          <p>Aprender astrologia se torna muito mais fÃ¡cil quando vocÃª comeÃ§a a observar mapas, histÃ³rias e interpretaÃ§Ãµes reais. Um espaÃ§o fechado para troca, aprofundamento e conexÃ£o entre alunos.</p>
+          <p class="planetas">1 encontro por mÃªs com Crassus</p>
+          <p>Para anÃ¡lise de casos, dÃºvidas, interpretaÃ§Ãµes e aprofundamentos â€” porque algumas das maiores compreensÃµes surgem quando vocÃª vÃª a astrologia acontecendo na vida de alguÃ©m.</p>
           <p class="valor">Valor percebido <b>R$&nbsp;397</b></p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ============ 12. A TRANSFORMAÇÃO ============ -->
+  <!-- ============ 12. A TRANSFORMAÃ‡ÃƒO ============ -->
   <section>
     <div class="col revela">
-      <p class="rotulo">A transformação</p>
-      <h2>Você começa estudando astrologia. Mas termina aprendendo uma nova forma de observar a si mesmo.</h2>
+      <p class="rotulo">A transformaÃ§Ã£o</p>
+      <h2>VocÃª comeÃ§a estudando astrologia. Mas termina aprendendo uma nova forma de observar a si mesmo.</h2>
 
       <ul class="pares">
         <li class="par">
-          <div class="antes"><span class="tag">Antes</span><p>você vê um símbolo.</p></div>
-          <div class="depois"><span class="tag">Depois</span><p>começa a enxergar um padrão.</p></div>
+          <div class="antes"><span class="tag">Antes</span><p>vocÃª vÃª um sÃ­mbolo.</p></div>
+          <div class="depois"><span class="tag">Depois</span><p>comeÃ§a a enxergar um padrÃ£o.</p></div>
         </li>
         <li class="par">
-          <div class="antes"><span class="tag">Antes</span><p>lê “Vênus em determinado signo”.</p></div>
-          <div class="depois"><span class="tag">Depois</span><p>percebe aquilo acontecendo na forma como alguém ama.</p></div>
+          <div class="antes"><span class="tag">Antes</span><p>lÃª â€œVÃªnus em determinado signoâ€.</p></div>
+          <div class="depois"><span class="tag">Depois</span><p>percebe aquilo acontecendo na forma como alguÃ©m ama.</p></div>
         </li>
         <li class="par">
-          <div class="antes"><span class="tag">Antes</span><p>vê Saturno em uma casa.</p></div>
-          <div class="depois"><span class="tag">Depois</span><p>entende melhor por que determinada área exige tanto amadurecimento.</p></div>
+          <div class="antes"><span class="tag">Antes</span><p>vÃª Saturno em uma casa.</p></div>
+          <div class="depois"><span class="tag">Depois</span><p>entende melhor por que determinada Ã¡rea exige tanto amadurecimento.</p></div>
         </li>
       </ul>
 
-      <p>Pouco a pouco, o mapa deixa de parecer um desenho complicado. Ele começa a fazer sentido.</p>
-      <p class="forte">E conforme o mapa começa a fazer sentido, você também começa a perceber aspectos de si mesma que antes pareciam desconectados.</p>
+      <p>Pouco a pouco, o mapa deixa de parecer um desenho complicado. Ele comeÃ§a a fazer sentido.</p>
+      <p class="forte">E conforme o mapa comeÃ§a a fazer sentido, vocÃª tambÃ©m comeÃ§a a perceber aspectos de si mesma que antes pareciam desconectados.</p>
     </div>
   </section>
 
   <!-- ============ 13. CRASSUS ============ -->
   <section style="background:linear-gradient(180deg,transparent,rgba(10,18,32,.55),transparent)">
     <div class="col revela">
-      <p class="rotulo">Quem vai conduzir você</p>
+      <p class="rotulo">Quem vai conduzir vocÃª</p>
       <h2>Crassus Gobbi</h2>
       <div class="crassus">
-        <p>Estuda e trabalha com astrologia há mais de uma década. Ao longo dessa trajetória, realizou mais de 5.000 atendimentos, ensinou centenas de alunos e desenvolveu uma forma própria de transmitir astrologia de maneira simples, prática e conectada à vida cotidiana.</p>
-        <p>Sua relação com esse conhecimento também atravessa gerações: a astrologia faz parte da história de sua família há décadas.</p>
+        <p>Estuda e trabalha com astrologia hÃ¡ mais de uma dÃ©cada. Ao longo dessa trajetÃ³ria, realizou mais de 5.000 atendimentos, ensinou centenas de alunos e desenvolveu uma forma prÃ³pria de transmitir astrologia de maneira simples, prÃ¡tica e conectada Ã  vida cotidiana.</p>
+        <p>Sua relaÃ§Ã£o com esse conhecimento tambÃ©m atravessa geraÃ§Ãµes: a astrologia faz parte da histÃ³ria de sua famÃ­lia hÃ¡ dÃ©cadas.</p>
         <p class="forte">Mas talvez o principal diferencial do Crassus esteja justamente na maneira como ele ensina.</p>
         <ul class="nao-e">
           <li>Sem excesso de formalidade.</li>
-          <li>Sem transformar astrologia em algo inalcançável.</li>
-          <li>Sem a necessidade de parecer um “mestre esotérico”.</li>
+          <li>Sem transformar astrologia em algo inalcanÃ§Ã¡vel.</li>
+          <li>Sem a necessidade de parecer um â€œmestre esotÃ©ricoâ€.</li>
         </ul>
-        <div class="divisor" aria-hidden="true"><span>✦</span></div>
-        <p class="centro forte" style="margin:0;font-size:1.2rem">O objetivo é fazer você compreender.</p>
+        <div class="divisor" aria-hidden="true"><span>âœ¦</span></div>
+        <p class="centro forte" style="margin:0;font-size:1.2rem">O objetivo Ã© fazer vocÃª compreender.</p>
       </div>
     </div>
   </section>
@@ -818,40 +818,40 @@ footer .marca{font-size:.85rem}
       <h2>Seu acesso completo ao Astrowake</h2>
 
       <div class="pilha">
-        <div class="item"><span>Formação Astrowake</span><b>R$&nbsp;1.997</b></div>
-        <div class="item"><span>Astrowake Trânsitos</span><b>R$&nbsp;997</b></div>
+        <div class="item"><span>FormaÃ§Ã£o Astrowake</span><b>R$&nbsp;1.997</b></div>
+        <div class="item"><span>Astrowake TrÃ¢nsitos</span><b>R$&nbsp;997</b></div>
         <div class="item"><span>Apostila Ilustrada Astrowake</span><b>R$&nbsp;97</b></div>
         <div class="item"><span>Comunidade VIP + encontros mensais</span><b>R$&nbsp;397</b></div>
-        <div class="total"><span>Valor total dos conteúdos</span><b>R$&nbsp;3.488</b></div>
+        <div class="total"><span>Valor total dos conteÃºdos</span><b>R$&nbsp;3.488</b></div>
       </div>
 
       <div class="preco">
-        <p class="chamada">Mas você não vai investir esse valor.<br>Hoje, seu acesso anual é de</p>
+        <p class="chamada">Mas vocÃª nÃ£o vai investir esse valor.<br>Hoje, seu acesso anual Ã© de</p>
         <div class="valor"><sup>R$</sup>1.497</div>
       </div>
 
       <a class="cta largo" href="#" data-checkout>Quero entrar no Astrowake</a>
-      <p class="sob-cta">Acesso imediato · 1 ano de acesso · conteúdo online</p>
+      <p class="sob-cta">Acesso imediato Â· 1 ano de acesso Â· conteÃºdo online</p>
     </div>
   </section>
 
-  <!-- ============ 15–16. OBJEÇÕES ============ -->
+  <!-- ============ 15â€“16. OBJEÃ‡Ã•ES ============ -->
   <section>
     <div class="col revela">
       <p class="rotulo">Antes de decidir</p>
-      <h2>Duas coisas que talvez estejam passando pela sua cabeça agora.</h2>
+      <h2>Duas coisas que talvez estejam passando pela sua cabeÃ§a agora.</h2>
 
       <div class="objecao">
-        <p class="fala">“Mas eu não quero trabalhar com astrologia.”</p>
-        <p class="forte">Ótimo. Você não precisa.</p>
-        <p>O Astrowake não foi criado apenas para quem deseja atender clientes ou construir uma carreira como astrólogo. A proposta é permitir que você utilize esse conhecimento primeiro na pessoa mais importante dessa história: <span class="ouro">você</span>.</p>
-        <p>Para compreender seus padrões. Observar suas relações. Entender seus potenciais. E desenvolver uma visão mais profunda sobre as escolhas que constroem sua vida.</p>
+        <p class="fala">â€œMas eu nÃ£o quero trabalhar com astrologia.â€</p>
+        <p class="forte">Ã“timo. VocÃª nÃ£o precisa.</p>
+        <p>O Astrowake nÃ£o foi criado apenas para quem deseja atender clientes ou construir uma carreira como astrÃ³logo. A proposta Ã© permitir que vocÃª utilize esse conhecimento primeiro na pessoa mais importante dessa histÃ³ria: <span class="ouro">vocÃª</span>.</p>
+        <p>Para compreender seus padrÃµes. Observar suas relaÃ§Ãµes. Entender seus potenciais. E desenvolver uma visÃ£o mais profunda sobre as escolhas que constroem sua vida.</p>
       </div>
 
       <div class="objecao">
-        <p class="fala">“Minha rotina já é corrida.”</p>
-        <p>Por isso o método não foi construído em torno de horas intermináveis de memorização. Você pode avançar progressivamente, assistir às aulas no seu ritmo e utilizar pequenos períodos do dia para revisar e aplicar os conceitos.</p>
-        <p class="forte">O objetivo não é transformar astrologia em mais uma obrigação. É permitir que ela se torne uma ferramenta que você naturalmente começa a usar.</p>
+        <p class="fala">â€œMinha rotina jÃ¡ Ã© corrida.â€</p>
+        <p>Por isso o mÃ©todo nÃ£o foi construÃ­do em torno de horas interminÃ¡veis de memorizaÃ§Ã£o. VocÃª pode avanÃ§ar progressivamente, assistir Ã s aulas no seu ritmo e utilizar pequenos perÃ­odos do dia para revisar e aplicar os conceitos.</p>
+        <p class="forte">O objetivo nÃ£o Ã© transformar astrologia em mais uma obrigaÃ§Ã£o. Ã‰ permitir que ela se torne uma ferramenta que vocÃª naturalmente comeÃ§a a usar.</p>
       </div>
     </div>
   </section>
@@ -859,15 +859,15 @@ footer .marca{font-size:.85rem}
   <!-- ============ 17. FECHAMENTO ============ -->
   <section class="fecho">
     <div class="col centro revela">
-      <h2>Quanto mais você entende quem você é, mais consciente pode se tornar sobre aquilo que <em>escolhe construir</em>.</h2>
-      <div class="divisor" aria-hidden="true"><span>✦</span></div>
-      <p class="forte" style="font-size:1.15rem">Astrologia não precisa dizer o que você deve fazer. Ela pode ajudar você a enxergar melhor quem está fazendo a escolha.</p>
-      <p>Se você sente que chegou o momento de aprofundar seu autoconhecimento e aprender uma linguagem capaz de revelar nuances que antes passavam despercebidas: o Astrowake é o seu próximo passo.</p>
+      <h2>Quanto mais vocÃª entende quem vocÃª Ã©, mais consciente pode se tornar sobre aquilo que <em>escolhe construir</em>.</h2>
+      <div class="divisor" aria-hidden="true"><span>âœ¦</span></div>
+      <p class="forte" style="font-size:1.15rem">Astrologia nÃ£o precisa dizer o que vocÃª deve fazer. Ela pode ajudar vocÃª a enxergar melhor quem estÃ¡ fazendo a escolha.</p>
+      <p>Se vocÃª sente que chegou o momento de aprofundar seu autoconhecimento e aprender uma linguagem capaz de revelar nuances que antes passavam despercebidas: o Astrowake Ã© o seu prÃ³ximo passo.</p>
       <p style="margin-bottom:2.2rem"></p>
-      <!-- âncora, não checkout: o único botão que leva ao pagamento é o
-           que fica junto ao preço -->
-      <a class="cta largo" href="#oferta">Quero começar o Astrowake</a>
-      <p class="sob-cta">Acesso imediato à formação completa + bônus + comunidade</p>
+      <!-- Ã¢ncora, nÃ£o checkout: o Ãºnico botÃ£o que leva ao pagamento Ã© o
+           que fica junto ao preÃ§o -->
+      <a class="cta largo" href="#oferta">Quero comeÃ§ar o Astrowake</a>
+      <p class="sob-cta">Acesso imediato Ã  formaÃ§Ã£o completa + bÃ´nus + comunidade</p>
     </div>
   </section>
 
@@ -877,44 +877,44 @@ footer .marca{font-size:.85rem}
   <span class="marca">ASTROWAKE</span>
 
   <ul class="legais">
-    <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
+    <li><a href="politica-de-privacidade.html">PolÃ­tica de Privacidade</a></li>
     <li><a href="termos-de-uso.html">Termos de Uso</a></li>
     <li><a href="mailto:crassusastrologo@gmail.com">Contato</a></li>
   </ul>
 
-  <!-- PENDENTE: razão social e CNPJ reais. Não invente estes números:
-       um CNPJ falso numa página comercial pode coincidir com empresa
-       existente, e a obrigação do art. 2º da Lei 8.078/90 e do Marco
-       Civil é identificar corretamente quem vende. -->
+  <!-- PENDENTE: razÃ£o social e CNPJ reais. NÃ£o invente estes nÃºmeros:
+       um CNPJ falso numa pÃ¡gina comercial pode coincidir com empresa
+       existente, e a obrigaÃ§Ã£o do art. 2Âº da Lei 8.078/90 e do Marco
+       Civil Ã© identificar corretamente quem vende. -->
   <p class="empresa">
-    Astrowake Serviços de Astrologia Ltda.<br>
+    Astrowake ServiÃ§os de Astrologia Ltda.<br>
     CNPJ <b>43.066.768/0001-70</b><br>
-    Rua 4800, n.º 10, apto. 1001
+    Rua 4800, n.Âº 10, apto. 1001
   </p>
 
   <p class="aviso-meta">
-    <b>Este site não tem qualquer vínculo com a Meta.</b> O Astrowake não é
+    <b>Este site nÃ£o tem qualquer vÃ­nculo com a Meta.</b> O Astrowake nÃ£o Ã©
     afiliado, associado, autorizado, endossado nem patrocinado pela Meta
-    Platforms, Inc. ou por qualquer uma de suas marcas — Facebook, Instagram,
+    Platforms, Inc. ou por qualquer uma de suas marcas â€” Facebook, Instagram,
     WhatsApp, Threads. Os nomes, marcas e logotipos pertencem aos seus
-    respectivos titulares e aparecem aqui apenas para identificação. Ao sair
-    do Facebook ou do Instagram e acessar esta página, a responsabilidade
-    pelo conteúdo e pela oferta passa a ser exclusivamente do Astrowake.
-    A Meta não avalia, aprova nem garante nada do que é oferecido aqui.
+    respectivos titulares e aparecem aqui apenas para identificaÃ§Ã£o. Ao sair
+    do Facebook ou do Instagram e acessar esta pÃ¡gina, a responsabilidade
+    pelo conteÃºdo e pela oferta passa a ser exclusivamente do Astrowake.
+    A Meta nÃ£o avalia, aprova nem garante nada do que Ã© oferecido aqui.
   </p>
 
-  <p class="copyright">Astrologia aplicada à vida real<br>© 2026 Astrowake · Todos os direitos reservados</p>
+  <p class="copyright">Astrologia aplicada Ã  vida real<br>Â© 2026 Astrowake Â· Todos os direitos reservados</p>
 </footer>
 
 <!-- ============ CAPTURA ANTES DO CHECKOUT ============ -->
 <div class="fundo-modal" id="modal" role="dialog" aria-modal="true"
      aria-labelledby="modal-titulo" hidden>
   <div class="modal">
-    <button class="fechar" type="button" data-fechar aria-label="Fechar">✕</button>
-    <p class="estrela" aria-hidden="true">✦</p>
+    <button class="fechar" type="button" data-fechar aria-label="Fechar">âœ•</button>
+    <p class="estrela" aria-hidden="true">âœ¦</p>
     <h2 id="modal-titulo">Falta um passo</h2>
-    <p class="apoio">Deixe seu nome e WhatsApp para levarmos você ao pagamento já
-      com os dados preenchidos — e para conseguirmos te ajudar se algo travar.</p>
+    <p class="apoio">Deixe seu nome e WhatsApp para levarmos vocÃª ao pagamento jÃ¡
+      com os dados preenchidos â€” e para conseguirmos te ajudar se algo travar.</p>
 
     <form id="form-lead" novalidate>
       <div class="campo" id="c-nome">
@@ -927,20 +927,20 @@ footer .marca{font-size:.85rem}
       <div class="campo" id="c-tel">
         <label for="lead-tel">WhatsApp</label>
         <div class="entrada">
-          <span class="ddi">🇧🇷 +55</span>
+          <span class="ddi">ðŸ‡§ðŸ‡· +55</span>
           <input id="lead-tel" name="telefone" type="tel" inputmode="numeric"
                  autocomplete="tel-national" placeholder="(00) 00000-0000"
                  maxlength="15" required>
         </div>
-        <p class="erro">Confira o número: precisa ter DDD e 9 dígitos.</p>
+        <p class="erro">Confira o nÃºmero: precisa ter DDD e 9 dÃ­gitos.</p>
       </div>
 
       <button class="cta" type="submit">Ir para o pagamento</button>
     </form>
 
     <p class="consentimento">
-      Ao continuar você concorda com a
-      <a href="politica-de-privacidade.html" target="_blank" rel="noopener">Política de
+      Ao continuar vocÃª concorda com a
+      <a href="politica-de-privacidade.html" target="_blank" rel="noopener">PolÃ­tica de
       Privacidade</a> e autoriza o contato por WhatsApp sobre o Astrowake.
     </p>
     <p class="selo-seguro">Pagamento processado pela Hotmart</p>
@@ -955,7 +955,7 @@ footer .marca{font-size:.85rem}
 <script>
 document.documentElement.classList.add('js');
 
-// entrada suave das seções
+// entrada suave das seÃ§Ãµes
 if (matchMedia('(prefers-reduced-motion: no-preference)').matches) {
   const obs = new IntersectionObserver((entradas) => {
     for (const e of entradas) {
@@ -967,7 +967,7 @@ if (matchMedia('(prefers-reduced-motion: no-preference)').matches) {
   document.querySelectorAll('.revela').forEach(el => el.classList.add('dentro'));
 }
 
-// a barra só aparece depois que o hero passa, e some dentro da própria oferta
+// a barra sÃ³ aparece depois que o hero passa, e some dentro da prÃ³pria oferta
 const barra = document.getElementById('barra');
 const hero  = document.querySelector('.hero');
 const oferta= document.getElementById('oferta');
@@ -981,19 +981,19 @@ new IntersectionObserver(([e]) => { naOferta = e.isIntersecting; pinta(); },
 
 
 /* ===================================================================
-   CAPTURA DO LEAD → CHECKOUT
+   CAPTURA DO LEAD â†’ CHECKOUT
 
-   Os botões ANTES do preço são âncora para #oferta: ninguém decide
+   Os botÃµes ANTES do preÃ§o sÃ£o Ã¢ncora para #oferta: ninguÃ©m decide
    pagar sem ter visto quanto custa, e mandar direto para o checkout
-   nesse ponto só queima o clique.
-   Os botões A PARTIR do preço ([data-checkout]) abrem este modal.
+   nesse ponto sÃ³ queima o clique.
+   Os botÃµes A PARTIR do preÃ§o ([data-checkout]) abrem este modal.
 
-   Uma ressalva importante e que precisa ficar escrita: esta página é
-   estática, hospedada no GitHub Pages. NÃO existe servidor aqui. O
-   nome e o telefone viajam para a Hotmart pela URL, e é só. Para o
-   lead chegar até vocês mesmo quando a pessoa desiste no pagamento,
-   preencha WEBHOOK abaixo com um endpoint que aceite POST — o mesmo
-   da ZapVoice já usado na Bússola serve.
+   Uma ressalva importante e que precisa ficar escrita: esta pÃ¡gina Ã©
+   estÃ¡tica, hospedada no GitHub Pages. NÃƒO existe servidor aqui. O
+   nome e o telefone viajam para a Hotmart pela URL, e Ã© sÃ³. Para o
+   lead chegar atÃ© vocÃªs mesmo quando a pessoa desiste no pagamento,
+   preencha WEBHOOK abaixo com um endpoint que aceite POST â€” o mesmo
+   da ZapVoice jÃ¡ usado na BÃºssola serve.
    =================================================================== */
 const CHECKOUT = 'https://pay.hotmart.com/S58109644P?checkoutMode=10';
 const WEBHOOK  = '/api/leads';
@@ -1005,7 +1005,7 @@ const iTel   = document.getElementById('lead-tel');
 const CHAVE  = 'astrowake_lead';
 let  origem  = null;   // quem abriu, para devolver o foco ao fechar
 
-/* máscara: formata o que a pessoa digita, sem nunca reordenar dígito */
+/* mÃ¡scara: formata o que a pessoa digita, sem nunca reordenar dÃ­gito */
 const mascara = (v) => {
   const d = v.replace(/\D/g, '').slice(0, 11);
   if (d.length <= 2)  return d.replace(/(\d{0,2})/, '($1');
@@ -1020,7 +1020,7 @@ function abrir(botao) {
   modal.hidden = false;
   modal.classList.add('aberto');
   document.body.style.overflow = 'hidden';
-  // devolve o que a pessoa já digitou numa visita anterior
+  // devolve o que a pessoa jÃ¡ digitou numa visita anterior
   try {
     const s = JSON.parse(localStorage.getItem(CHAVE) || '{}');
     if (s.nome && !iNome.value) iNome.value = s.nome;
@@ -1065,8 +1065,8 @@ form.addEventListener('submit', (e) => {
   const nome = iNome.value.trim().replace(/\s+/g, ' ');
   const dig  = iTel.value.replace(/\D/g, '');
 
-  // 10 dígitos ainda existe em fixo; 11 é o celular com o 9. Menos que
-  // isso é digitação incompleta, não número curto.
+  // 10 dÃ­gitos ainda existe em fixo; 11 Ã© o celular com o 9. Menos que
+  // isso Ã© digitaÃ§Ã£o incompleta, nÃ£o nÃºmero curto.
   const okNome = marcar('c-nome', nome.length < 2);
   const okTel  = marcar('c-tel', !(dig.length === 10 || dig.length === 11));
   if (!okNome) { iNome.focus(); return; }
@@ -1074,7 +1074,7 @@ form.addEventListener('submit', (e) => {
 
   try { localStorage.setItem(CHAVE, JSON.stringify({ nome, tel: dig })); } catch {}
 
-  // Hotmart preenche o checkout por estes parâmetros
+  // Hotmart preenche o checkout por estes parÃ¢metros
   const u = new URL(CHECKOUT);
   u.searchParams.set('name', nome);
   u.searchParams.set('phoneac', dig.slice(0, 2));
@@ -1082,7 +1082,6 @@ form.addEventListener('submit', (e) => {
 
   if (typeof fbq === 'function') fbq('track', 'InitiateCheckout');
   if (WEBHOOK) {
-    // keepalive: a requisição sobrevive à navegação que vem logo abaixo
     fetch(WEBHOOK, {
       method: 'POST', keepalive: true,
       headers: { 'Content-Type': 'application/json' },
@@ -1091,7 +1090,17 @@ form.addEventListener('submit', (e) => {
     }).catch(() => {});
   }
 
+  // Fecha o modal antes de redirecionar para que, ao voltar no historico, esteja fechado
+  fechar();
+
   window.location.href = u.toString();
+});
+
+// Garante que o modal esteja sempre fechado quando a pagina for restaurada do cache (Back/Forward Cache)
+window.addEventListener('pageshow', (e) => {
+  if (e.persisted || performance.getEntriesByType('navigation')[0]?.type === 'back_forward') {
+    fechar();
+  }
 });
 </script>
 </html>
